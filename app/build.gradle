@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    namespace 'com.simplerosary.app'
+    namespace 'com.openrosary.app'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.simplerosary.app"
+        applicationId "com.openrosary.app"
         minSdk 26  // Updated from 21 to 26 to support adaptive icons
         targetSdk 33
         versionCode 1
-        versionName "0.1" // Changed from "1.0"
+        versionName "0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
