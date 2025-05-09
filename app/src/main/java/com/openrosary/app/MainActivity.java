@@ -1,4 +1,4 @@
-package com.simplerosary.app;
+package com.openrosary.app;
 
 // import android.app.AlertDialog; // Removing this import as we're using the androidx version
 import android.content.DialogInterface;

@@ -1,4 +1,4 @@
-package com.simplerosary.app;
+package com.openrosary.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

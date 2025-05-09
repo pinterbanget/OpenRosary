@@ -1,4 +1,4 @@
-package com.simplerosary.app;
+package com.openrosary.app;
 
 import android.content.Context; // Added
 import android.content.ContextWrapper; // Added
