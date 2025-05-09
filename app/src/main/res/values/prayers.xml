@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common Prayers -->
+    <string name="prayer_sign_of_cross">In the name of the Father, and of the Son, and of the Holy Spirit. Amen.</string>
+    <string name="prayer_apostles_creed">I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son, our Lord; Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into Hell; the third day He arose again from the dead; He ascended into Heaven, and is seated at the right hand of God, the Father Almighty; from thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the communion of Saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.</string>
+    <string name="prayer_our_father">Our Father, Who art in Heaven, hallowed be Thy name; Thy Kingdom come, Thy will be done on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen.</string>
+    <string name="prayer_hail_mary">Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.</string>
+    <string name="prayer_hail_mary_faith">For our Faith - Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.</string>
+    <string name="prayer_hail_mary_hope">For our Hope - Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.</string>
+    <string name="prayer_hail_mary_charity">For our Charity - Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.</string>
+    <string name="prayer_glory_be">Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.</string>
+    <string name="prayer_fatima">O my Jesus, forgive us our sins, save us from the fires of Hell, lead all souls to Heaven, especially those in most need of Thy mercy. Amen.</string>
+    <string name="prayer_hail_holy_queen">Hail, Holy Queen, Mother of Mercy, our life, our sweetness and our hope! To thee do we cry, poor banished children of Eve; to thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary! Pray for us, O Holy Mother of God, that we may be made worthy of the promises of Christ.</string>
+    <string name="prayer_rosary">Let us pray. O God, whose only begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life, grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ Our Lord. Amen.</string>
+
+    <!-- Prayer Titles -->
+    <string name="title_sign_of_cross">Sign of the Cross</string>
+    <string name="title_apostles_creed">Apostles\&apos; Creed</string>
+    <string name="title_our_father">Our Father</string>
+    <string name="title_hail_mary">Hail Mary</string>
+    <string name="title_hail_mary_faith">Hail Mary (1/3)</string>
+    <string name="title_hail_mary_hope">Hail Mary (2/3)</string>
+    <string name="title_hail_mary_charity">Hail Mary (3/3)</string>
+    <string name="title_hail_mary_decade">Hail Mary (%d/10)</string>
+    <string name="title_glory_be">Glory Be</string>
+    <string name="title_fatima_prayer">Fatima Prayer</string>
+    <string name="title_hail_holy_queen">Hail Holy Queen</string>
+    <string name="title_rosary_prayer">Rosary Prayer</string>
+    
+    <!-- Joyful Mysteries -->
+    <string-array name="joyful_mysteries_titles">
+        <item>The Annunciation</item>
+        <item>The Visitation</item>
+        <item>The Nativity</item>
+        <item>The Presentation in the Temple</item>
+        <item>The Finding in the Temple</item>
+    </string-array>
+    
+    <string-array name="joyful_mysteries_descriptions">
+        <item>The angel Gabriel announces to Mary that she is to be the Mother of God.</item>
+        <item>Mary visits her cousin Elizabeth, who is pregnant with John the Baptist.</item>
+        <item>Jesus is born in Bethlehem.</item>
+        <item>Mary and Joseph present Jesus in the Temple.</item>
+        <item>After being lost for three days, Jesus is found in the Temple discussing with the doctors.</item>
+    </string-array>
+
+    <!-- Luminous Mysteries -->
+    <string-array name="luminous_mysteries_titles">
+        <item>The Baptism in the Jordan</item>
+        <item>The Wedding at Cana</item>
+        <item>The Proclamation of the Kingdom</item>
+        <item>The Transfiguration</item>
+        <item>The Institution of the Eucharist</item>
+    </string-array>
+    
+    <string-array name="luminous_mysteries_descriptions">
+        <item>Jesus is baptized by John the Baptist in the Jordan River.</item>
+        <item>Jesus performs his first miracle, changing water into wine at the wedding in Cana.</item>
+        <item>Jesus proclaims the Kingdom of God and calls all to conversion.</item>
+        <item>Jesus is transfigured on Mount Tabor, revealing his Divine Glory.</item>
+        <item>Jesus institutes the Eucharist at the Last Supper as the sacramental expression of the Paschal Mystery.</item>
+    </string-array>
+
+    <!-- Sorrowful Mysteries -->
+    <string-array name="sorrowful_mysteries_titles">
+        <item>The Agony in the Garden</item>
+        <item>The Scourging at the Pillar</item>
+        <item>The Crowning with Thorns</item>
+        <item>The Carrying of the Cross</item>
+        <item>The Crucifixion and Death</item>
+    </string-array>
+    
+    <string-array name="sorrowful_mysteries_descriptions">
+        <item>Jesus prays in the Garden of Gethsemane on the night before he dies.</item>
+        <item>Jesus is scourged at the pillar by order of Pontius Pilate.</item>
+        <item>Jesus is crowned with thorns.</item>
+        <item>Jesus carries the cross to Calvary.</item>
+        <item>Jesus is crucified and dies on the cross.</item>
+    </string-array>
+
+    <!-- Glorious Mysteries -->
+    <string-array name="glorious_mysteries_titles">
+        <item>The Resurrection</item>
+        <item>The Ascension</item>
+        <item>The Descent of the Holy Spirit</item>
+        <item>The Assumption</item>
+        <item>The Coronation of the Virgin</item>
+    </string-array>
+    
+    <string-array name="glorious_mysteries_descriptions">
+        <item>Jesus rises from the dead on the third day.</item>
+        <item>Jesus ascends into Heaven forty days after the Resurrection.</item>
+        <item>The Holy Spirit descends upon Mary and the Apostles.</item>
+        <item>Mary is assumed body and soul into Heaven.</item>
+        <item>Mary is crowned Queen of Heaven and Earth.</item>
+    </string-array>
+
+</resources>

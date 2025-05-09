@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Info -->
+    <string name="app_name">OpenRosary</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_message">Selamat datang di Rosario Sederhana\nPenghitung doa rosario yang minimalis</string>
+    <string name="choose_theme">Pilih Tema:</string>
+    <string name="theme">Tema</string>
+    <string name="choose_language">Pilih Bahasa:</string>
+    <string name="start_button">Mulai</string>
+    
+    <!-- Theme Options -->
+    <string name="theme_light">Terang</string>
+    <string name="theme_amoled">Gelap (AMOLED)</string>
+    <string name="theme_switch_label">Ganti Tema</string>
+    <string name="light">Terang</string>
+    <string name="dark">Gelap</string>
+    
+    <!-- Mysteries Titles -->
+    <string name="choose_mysteries">Pilih Peristiwa</string>
+    <string name="joyful_mysteries">Peristiwa Gembira</string>
+    <string name="sorrowful_mysteries">Peristiwa Sedih</string>
+    <string name="glorious_mysteries">Peristiwa Mulia</string>
+    <string name="luminous_mysteries">Peristiwa Terang</string>
+    
+    <!-- Counter Screen -->
+    <string name="counter_instructions">Tekan Volume Bawah untuk menghitung naik\nTekan Volume Atas untuk menghitung turun</string>
+    <string name="general_options">Opsi Umum</string>
+    
+    <!-- Rosary Instructions -->
+    <string name="rosary_instructions">Tekan Volume Bawah atau geser ke kiri untuk melanjutkan Rosario</string>
+    
+    <!-- Dialog Buttons -->
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="exit_confirmation_title">Keluar?</string>
+    <string name="exit_confirmation_message">Apakah kamu ingin kembali ke pemilihan peristiwa?</string>
+    
+    <!-- General labels -->
+    <string name="mystery">Peristiwa</string>
+    <string name="prayer">Doa</string>
+    <string name="complete">Selesai</string>
+    <string name="mystery_label">Peristiwa #%d</string>
+    
+    <!-- Rosary Completion -->
+    <string name="completion_title">Rosario Selesai</string>
+    <string name="continue_iterate">Kamu telah menyelesaikan doa Rosario. Tuhan memberkati!</string>
+    
+    <!-- Mystery type names -->
+    <string name="mystery_type_joyful">Gembira</string>
+    <string name="mystery_type_sorrowful">Sedih</string>
+    <string name="mystery_type_glorious">Mulia</string>
+    <string name="mystery_type_luminous">Terang</string>
+    
+    <!-- Mystery announcement format -->
+    <string name="mystery_announcement_format">Peristiwa %2$s #%1$d: %3$s</string>
+    
+    <!-- Arrays -->
+    <string-array name="theme_options">
+        <item>@string/theme_light</item>
+        <item>@string/theme_amoled</item>
+    </string-array>
+</resources>

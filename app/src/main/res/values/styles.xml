@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/backgroundColorLight</item>
+        <item name="android:colorBackground">@color/backgroundColorLight</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="mysteryButtonStyle">@style/MysteryButtonLight</item>
+        <item name="spinnerBackgroundStyle">@drawable/spinner_background</item>
+        <item name="startButtonColorOnlyStyle">@style/StartButtonLight</item> <!-- Added -->
+    </style>
+
+    <!-- Splash screen theme to prevent flickering -->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@color/backgroundColorLight</item>
+    </style>
+
+    <!-- AMOLED Dark theme -->
+    <style name="AppTheme.Amoled" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/backgroundColorAmoled</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/backgroundColorAmoled</item>
+        <item name="android:colorBackground">@color/backgroundColorAmoled</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="mysteryButtonStyle">@style/MysteryButtonDark</item>
+        <item name="spinnerBackgroundStyle">@drawable/spinner_background_dark</item>
+        <item name="startButtonColorOnlyStyle">@style/StartButtonDark</item> <!-- Added -->
+    </style>
+    
+    <!-- Light theme mystery button style -->
+    <style name="MysteryButtonLight">
+        <item name="android:background">@drawable/mystery_button_background</item>
+        <item name="android:textColor">@color/colorPrimary</item> <!-- Changed for visibility on white bg -->
+        <item name="android:padding">12dp</item>
+    </style>
+    
+    <!-- Dark theme mystery button style -->
+    <style name="MysteryButtonDark">
+        <item name="android:background">@drawable/mystery_button_background_dark</item>
+        <item name="android:textColor">@color/colorAccent</item> <!-- Changed for visibility on black bg -->
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- Style for Start Button (Light Theme) -->
+    <style name="StartButtonLight">
+        <item name="android:background">@drawable/start_button_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- Style for Start Button (Dark Theme) -->
+    <style name="StartButtonDark">
+        <item name="android:background">@drawable/start_button_background</item> <!-- Changed to use the base name -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">12dp</item>
+    </style>
+</resources>

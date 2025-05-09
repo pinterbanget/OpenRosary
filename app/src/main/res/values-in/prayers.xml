@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common Prayers -->
+    <string name="prayer_sign_of_cross">Dalam nama Bapa, dan Putra, dan Roh Kudus. Amin.</string>
+    <string name="prayer_apostles_creed">Aku percaya akan Allah, Bapa yang mahakuasa, Pencipta langit dan bumi; dan akan Yesus Kristus, Putra-Nya yang tunggal, Tuhan kita; yang dikandung dari Roh Kudus, dilahirkan oleh Perawan Maria; yang menderita sengsara dalam pemerintahan Pontius Pilatus, disalibkan, wafat dan dimakamkan; yang turun ke tempat penantian, pada hari ketiga bangkit dari antara orang mati; yang naik ke surga, duduk di sebelah kanan Allah Bapa yang mahakuasa; dari situ Ia akan datang mengadili orang yang hidup dan yang mati. Aku percaya akan Roh Kudus, Gereja Katolik yang kudus, persekutuan para kudus, pengampunan dosa, kebangkitan badan, kehidupan kekal. Amin.</string>
+    <string name="prayer_our_father">Bapa kami yang ada di surga, dimuliakanlah nama-Mu. Datanglah kerajaan-Mu. Jadilah kehendak-Mu di atas bumi seperti di dalam surga. Berilah kami rejeki pada hari ini, dan ampunilah kesalahan kami, seperti kami pun mengampuni yang bersalah kepada kami. Dan janganlah masukkan kami ke dalam pencobaan, tetapi bebaskanlah kami dari yang jahat. Amin.</string>
+    <string name="prayer_hail_mary">Salam Maria penuh rahmat, Tuhan sertamu. Terpujilah engkau di antara wanita dan terpujilah buah tubuhmu, Yesus. Santa Maria, Bunda Allah, doakanlah kami yang berdosa ini sekarang dan waktu kami mati. Amin.</string>
+    <string name="prayer_hail_mary_faith">Salam Putri Allah Bapa. Salam Maria penuh rahmat, Tuhan sertamu. Terpujilah engkau di antara wanita dan terpujilah buah tubuhmu, Yesus. Santa Maria, Bunda Allah, doakanlah kami yang berdosa ini sekarang dan waktu kami mati. Amin.</string>
+    <string name="prayer_hail_mary_hope">Salam Bunda Allah Putra. Salam Maria penuh rahmat, Tuhan sertamu. Terpujilah engkau di antara wanita dan terpujilah buah tubuhmu, Yesus. Santa Maria, Bunda Allah, doakanlah kami yang berdosa ini sekarang dan waktu kami mati. Amin.</string>
+    <string name="prayer_hail_mary_charity">Salam Mempelai Allah Roh Kudus. Salam Maria penuh rahmat, Tuhan sertamu. Terpujilah engkau di antara wanita dan terpujilah buah tubuhmu, Yesus. Santa Maria, Bunda Allah, doakanlah kami yang berdosa ini sekarang dan waktu kami mati. Amin.</string>
+    <string name="prayer_glory_be">Kemuliaan kepada Bapa, dan Putra, dan Roh Kudus. Seperti pada permulaan, sekarang, dan selalu, dan sepanjang segala abad. Amin.\n\nTerpujilah nama Yesus, Maria, dan Yosef. Sekarang dan selama-lamanya. Amin.</string>
+    <string name="prayer_fatima">Ya Yesus yang baik, ampunilah dosa-dosa kami. Selamatkanlah kami dari api neraka, dan hantarlah jiwa-jiwa ke surga, terlebih jiwa-jiwa yang sangat membutuhkan kerahiman-Mu. Amin.</string>
+    <string name="prayer_hail_holy_queen">Salam, ya Ratu, Bunda yang berbelas kasih, hidup, hiburan dan harapan kami. Kepadamu kami berseru, kami anak-anak yang malang yang dikeluarkan dari Eden. Kami semua memanjatkan permohonan, kami amat susah, mengeluh, mengesah dalam lembah duka ini. Arahkanlah pandangan mata belas kasihmu kepada kami, ya pembela kami yang murah hati, dan setelah pembuangan kami ini, tunjukkanlah kepada kami buah rahimmu yang kudus, Yesus. Ya Perawan Maria yang pengampun, penuh kasih, dan manis. Doakanlah kami, ya Santa Bunda Allah, supaya kami dapat menikmati janji Kristus. Amin.</string>
+    <string name="prayer_rosary">Marilah kita berdoa. Ya Allah, yang Putra tunggal-Mu, dengan hidup, wafat dan kebangkitan-Nya, telah memperoleh bagi kami pahala kehidupan kekal, kami mohon, agar dengan merenungkan peristiwa-peristiwa Rosario Suci Santa Perawan Maria, kami dapat meneladan apa yang dikandungnya dan memperoleh apa yang dijanjikan-Nya. Demi Kristus, pengantara kami. Amin.</string>
+
+    <!-- Prayer Titles -->
+    <string name="title_sign_of_cross">Tanda Salib</string>
+    <string name="title_apostles_creed">Syahadat Para Rasul</string>
+    <string name="title_our_father">Bapa Kami</string>
+    <string name="title_hail_mary">Salam Maria</string>
+    <string name="title_hail_mary_faith">Salam Maria (1/3)</string>
+    <string name="title_hail_mary_hope">Salam Maria (2/3)</string>
+    <string name="title_hail_mary_charity">Salam Maria (3/3)</string>
+    <string name="title_hail_mary_decade">Salam Maria (%d/10)</string>
+    <string name="title_glory_be">Kemuliaan / Terpujilah</string>
+    <string name="title_fatima_prayer">Doa Fatima</string>
+    <string name="title_hail_holy_queen">Salam Ya Ratu</string>
+    <string name="title_rosary_prayer">Doa Penutup Rosario</string>
+
+    <!-- Joyful Mysteries -->
+    <string-array name="joyful_mysteries_titles">
+        <item>Maria Menerima Kabar Gembira dari Malaikat Gabriel</item>
+        <item>Maria Mengunjungi Elisabet, Saudarinya</item>
+        <item>Yesus Dilahirkan di Betlehem</item>
+        <item>Yesus Dipersembahkan dalam Bait Allah</item>
+        <item>Yesus Diketemukan dalam Bait Allah</item>
+    </string-array>
+    
+    <string-array name="joyful_mysteries_descriptions">
+        <item>Bacaan: Luk 1:26-38 (TB2)\n\nDalam bulan yang keenam malaikat Gabriel disuruh Allah pergi ke Nazaret di Galilea, kepada seorang perawan yang bertunangan dengan seorang bernama Yusuf dari keluarga Daud; nama perawan itu Maria. Ketika datang kepada Maria, malaikat itu berkata, \"Salam, hai Engkau yang dikaruniai! Tuhan menyertai engkau.\" Maria terkejut mendengar perkataan itu, lalu bertanya di dalam hatinya, apa maksud salam itu. Kata malaikat itu kepadanya, \"Jangan takut, hai Maria, sebab engkau beroleh anugerah di hadapan Allah. Sesungguhnya engkau akan mengandung dan melahirkan seorang anak laki-laki dan engkau harus menamai Dia Yesus. Ia akan menjadi besar dan akan disebut Anak Allah Yang Maha Tinggi. Tuhan Allah akan memberikan kepada-Nya takhta Daud, bapa leluhur-Nya, dan Ia akan memerintah atas keturunan Yakub sampai selama-lamanya dan Kerajaan-Nya tidak akan berkesudahan.\" Kata Maria kepada malaikat itu, \"Bagaimana mungkin hal itu terjadi, karena aku belum pernah berhubungan dengan laki-laki?\" Jawab malaikat itu kepadanya, \"Roh Kudus akan turun atasmu dan kuasa Allah Yang Maha Tinggi akan menaungi engkau. Anak yang dilahirkan itu kudus dan akan disebut Anak Allah. Lihat, Elisabet, sanakmu itu, ia pun sedang mengandung seorang anak laki-laki pada hari tuanya dan inilah bulan yang keenam bagi dia, yang disebut mandul itu. Sebab, bagi Allah tidak ada yang mustahil.\" Kata Maria, \"Aku ini hamba Tuhan. Jadilah padaku menurut perkataanmu itu.\" Lalu malaikat itu meninggalkan dia.</item>
+        <item>Bacaan: Luk 1:39-45 (TB2)\n\nBeberapa hari kemudian berangkatlah Maria dan bergegas menuju seubah kota di pegunungan Yehuda. Lalu ia masuk ke rumah Zakharia dan memberi salam kepada Elisabet. Ketika Elisabet mendengar salam Maria, melonjaklah anak yang di dalam rahimnya dan Elisabet pun penuh dengan Roh Kudus, lalu berseru dengan suara nyaring, \"Diberkatilah engkau di antara semua perempuan dan diberkatilah buah rahimmu. Siapakah aku ini sampai ibu Tuhanku datang mengunjungi aku? Sebab, pada saat salammu sampai di telingaku, anak yang di dalam rahimku melonjak kegirangan. Berbahagialah ia yang percaya bahwa apa yang dikatakan kepadanya dari Tuhan akan terlaksana.\"</item>
+        <item>Bacaan: Luk 2:1-7 (TB2)\n\nPada waktu itu Kaisar Agustus mengeluarkan suatu perintah, menyuruh mendaftarkan semua orang di seluruh dunia. Inilah pendaftaran yang pertama kali diadakan sewaktu Kirenius menjadi gubernur di Siria. Lalu semua orang pergi mendaftarkan diri, masing-masing ke kotanya sendiri. Yusuf pun pergi dari kota Nazaret di Galilea ke Yudea, ke kota Daud yang bernama Betlehem, karena ia berasal dari keluarga keturunan Daud, untuk mendaftarkan diri bersama Maria, tunangannya, yang sedang mengandung. Ketika mereka di situ tibalah waktunya bagi Maria untuk bersalin, dan ia melahirkan seorang anak laki-laki, anaknya yang sulung. Ia membedungnya lalu membaringkannya di dalam palungan, karena tidak ada tempat bagi mereka di penginapan.</item>
+        <item>Bacaan: Luk 2:22-38 (TB2)\n\nLalu ketika tiba waktu penahiran mereka menurut hukum Musa, mereka membawa Dia ke Yerusalem untuk menyerahkan-Nya kepada Tuhan, seperti ada tertulis dalam hukum Tuhan, \"Semua anak laki-laki sulung harus dikuduskan bagi Tuhan\", dan untuk mempersembahkan kurban menurut apa yang difirmankan dalam hukum Tuhan, yaitu sepasang burung tekukur atau dua ekor anak burung merpati. Adalah di Yerusalem seorang bernama Simeon. Ia seorang yang benar dan saleh yang menantikan penghiburan bagi Israel, dan Roh Kudus ada di atasnya. Kepadanya telah dinyatakan oleh Roh Kudus bahwa ia tidak akan mati sebelum ia melihat Mesias dari Tuhan. Ia datang ke Bait Allah oleh Roh Kudus. Ketika Yesus, Anak itu, dibawa masuk oleh orang tua-Nya untuk melakukan kepada-Nya apa yang ditentukan hukum Taurat, ia menyambut Anak itu dan menggendong-Nya sambil memuji Allah, katanya, \"Sekarang, Tuhan, biarkanlah hamba-Mu ini pergi dalam damai, sesuai dengan firman-Mu, sebab mataku telah melihat keselamatan yang datang dari-Mu, yang telah Engkau sediakan di hadapan segala bangsa, yaitu terang yang menjadi penyataan-Mu bagi bangsa-bangsa lain dan menjadi kemuliaan umat-Mu, Israel.\" Ayah dan ibu-Nya heran akan segala sesuatu yang dikatakan tentang Dia. Lalu Simeon memberkati mereka dan berkata kepada Maria, ibu Anak itu, \"Sesungguhnya Anak ini ditentukan untuk menjatuhkan dan membangkitkan banyak orang di Israel dan untuk menjadi suatu tanda yang menimbulkan pembantahan supaya menjadi nyata pikiran hati banyak orang. Suatu pedang juga akan menembus jiwamu sendiri.\" Ada pula seorang nabiah bernama Hana, anak perempuan Fanuel dari suku Asyer. Sesudah kawin, ia hidup bersama suaminya tujuh tahun lamanya, lalu menjanda sampai berumur delapan puluh empat tahun. Ia tidak pernah meninggalkan Bait Allah dan siang malam beribadah dengan berpuasa dan berdoa. Pada saat itu juga ia mendekat dan mengucap syukur kepada Allah. Ia berbicara tentang Anak itu kepada semua orang yang menantikan pembebasan untuk Yerusalem.</item>
+        <item>Bacaan: Luk 2:41-52 (TB2)\n\nTiap-tiap tahun orang tua Yesus pergi ke Yerusalem untuk merayakan Paskah. Ketika Yesus telah berumur dua belas tahun pergilah mereka ke Yerusalem seperti yang lazim pada perayaan itu. Ketika hari-hari itu berakhir, sementara mereka berjalan pulang, tinggallah Yesus, Anak itu, di Yerusalem tanpa diketahui orang tua-Nya. Karena mereka menyangka bahwa Ia ada di antara orang-orang seperjalanan mereka, berjalanlah mereka sehari perjalanan jauhnya, lalu mencari Dia di antara kaum keluarga dan kenalan mereka. Karena mereka tidak menemukan Dia, kembalilah mereka ke Yerusalem sambil terus mencari Dia. Sesudah tiga hari mereka menemukan Dia dalam Bait Allah. Ia sedang duduk di tengah-tengah para guru agama, sambil mendengarkan mereka dan mengajukan pertanyaan-pertanyaan kepada mereka. Semua orang yang mendengar Dia sangat heran akan kecerdasan-Nya dan jawaban-jawaban yang diberikan-Nya. Ketika orang tua-Nya melihat Dia, tercenganglah mereka, lalu kata ibu-Nya, \"Nak, mengapa Engkau berbuat demikian kepada kami? Lihat, bapak-Mu dan aku dengan cemas mencari Engkau.\" Jawab-Nya kepada mereka, \"Mengapa kamu mencari Aku? Tidakkah kamu tahu bahwa Aku harus berada di dalam rumah Bapa-Ku?\" Namun, mereka tidak mengerti apa yang dikatakan-Nya kepada mereka. Lalu ia pulang bersama mereka ke Nazaret, dan tetap hidup dalam asuhan mereka. Ibu-Nya pun menyimpan semua hal itu di dalam hati-Nya. Yesus makin dewasa dan bertambah hikmat-Nya, dan makin dikasihi oleh Allah dan manusia.</item>
+    </string-array>
+
+    <!-- Luminous Mysteries -->
+    <string-array name="luminous_mysteries_titles">
+        <item>Yesus Dibaptis di Sungai Yordan</item>
+        <item>Yesus Menyatakan Diri-Nya dalam Pesta Perkawinan di Kana</item>
+        <item>Yesus Memberitakan Kerjaaan Allah dan Menyerukan Pertobatan</item>
+        <item>Yesus Menampakkan Kemuliaan-Nya</item>
+        <item>Yesus Menetapkan Ekaristi</item>
+    </string-array>
+    
+    <string-array name="luminous_mysteries_descriptions">
+        <item>Yesus dibaptis oleh Yohanes Pembaptis di Sungai Yordan.</item>
+        <item>Yesus melakukan mukjizat pertamanya, mengubah air menjadi anggur di pesta perkawinan di Kana.</item>
+        <item>Yesus mewartakan Kerajaan Allah dan mengajak semua orang bertobat.</item>
+        <item>Yesus dimuliakan di Gunung Tabor, menampakkan Kemuliaan Ilahi-Nya.</item>
+        <item>Yesus menetapkan Ekaristi pada Perjamuan Terakhir sebagai ungkapan sakramental Misteri Paskah.</item>
+    </string-array>
+
+    <!-- Sorrowful Mysteries -->
+    <string-array name="sorrowful_mysteries_titles">
+        <item>Yesus Berdoa kepada Bapa-Nya di Surga dalam Sakratul Maut</item>
+        <item>Yesus Didera</item>
+        <item>Yesus Dimahkotai Duri</item>
+        <item>Yesus Memanggul Salib-Nya</item>
+        <item>Yesus Wafat di Salib</item>
+    </string-array>
+    
+    <string-array name="sorrowful_mysteries_descriptions">
+        <item>Yesus berdoa di Taman Getsemani pada malam sebelum Ia wafat.</item>
+        <item>Yesus disesah atas perintah Pontius Pilatus.</item>
+        <item>Yesus dimahkotai duri.</item>
+        <item>Yesus memikul salib-Nya menuju Kalvari.</item>
+        <item>Yesus disalibkan dan wafat di salib.</item>
+    </string-array>
+
+    <!-- Glorious Mysteries -->
+    <string-array name="glorious_mysteries_titles">
+        <item>Yesus Bangkit dari Kematian</item>
+        <item>Yesus Naik ke Surga</item>
+        <item>Roh Kudus Turun atas Para Rasul</item>
+        <item>Maria Diangkat ke Surga</item>
+        <item>Maria Dimahkotai di Surga</item>
+    </string-array>
+    
+    <string-array name="glorious_mysteries_descriptions">
+        <item>Yesus bangkit dari kematian pada hari ketiga.</item>
+        <item>Yesus naik ke surga empat puluh hari setelah Kebangkitan.</item>
+        <item>Roh Kudus turun atas Maria dan para Rasul.</item>
+        <item>Maria diangkat jiwa dan raganya ke surga.</item>
+        <item>Maria dimahkotai sebagai Ratu Surga dan Bumi.</item>
+    </string-array>
+
+</resources>

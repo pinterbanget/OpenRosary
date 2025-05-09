@@ -1,0 +1,36 @@
+# OpenRosary
+
+OpenRosary is a simple, beautiful, and easy-to-use app designed to help you pray the Rosary. Whether you're new to this devotion or have been praying it for years, OpenRosary offers a focused and distraction-free experience.
+
+## Features
+
+*   **Minimalist Design:** A clean interface that helps you concentrate on your prayers.
+*   **Easy Navigation:** Advance through the Rosary beads with simple swipes or by using your device's volume buttons.
+*   **Mystery Selection:** Choose from the Joyful, Sorrowful, Glorious, or Luminous Mysteries.
+*   **Prayer Tracking:** The app keeps track of your progress through the prayers and decades.
+*   **Haptic Feedback:** Subtle vibrations guide you through the prayers, distinguishing between different bead types.
+*   **Customizable Themes:** Select between a light theme and a dark (AMOLED-friendly) theme for comfortable viewing in any lighting condition.
+*   **Multi-Language Support:** Currently supports English and Bahasa Indonesia. *Feel free to contribute by adding your own language!*
+
+## How to Use
+
+1.  **Choose your Theme and Language:** When you first open the app, select your preferred theme and language.
+2.  **Select the Mysteries:** Tap "Start" and then choose the set of Mysteries you wish to pray (Joyful, Sorrowful, Glorious, or Luminous).
+3.  **Pray:**
+    *   The current prayer and its title will be displayed.
+    *   **Swipe left or press Volume Down** to move to the next prayer.
+    *   **Swipe right or press Volume Up** to go back to the previous prayer.
+    *   The app will guide you through the Sign of the Cross, Apostles' Creed, Our Fathers, Hail Marys, Glory Bes, Fatima Prayer, Hail Holy Queen, and the concluding Rosary prayer.
+4.  **Completion:** Once you've completed the Rosary, a message will appear. You can then choose to pray another set of Mysteries or exit.
+
+## Contributing
+
+This project is open source and contributions are welcome! Whether it's adding new features, improving translations, or fixing bugs, your help is appreciated. (Details on how to contribute will be added soon).
+
+## Feedback
+
+If you have any feedback, suggestions, or encounter any issues, please feel free to open an issue on the GitHub repository.
+
+---
+
+*Let this app be a companion in your moments of prayer and reflection.*

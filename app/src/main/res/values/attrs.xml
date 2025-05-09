@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom attributes for theme styling -->
+    <attr name="mysteryButtonStyle" format="reference" />
+    <attr name="spinnerBackgroundStyle" format="reference" />
+    <attr name="startButtonColorOnlyStyle" format="reference" /> <!-- Added for Start Button -->
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#507869</color> <!-- Same as light for now -->
+    <color name="colorPrimaryDark">#1F2D28</color> <!-- Darker shade for dark theme -->
+    <color name="colorAccent">#B0E0D2</color> <!-- Slightly different accent for dark theme testing -->
+    <color name="textColorLight">#FFFFFF</color>
+    <color name="textColorDark">#DDFFFFFF</color>
+    <color name="backgroundColorLight">#FFFFFF</color>
+    <color name="backgroundColorAmoled">#0A0A0A</color> <!-- Slightly off-black -->
+    <color name="buttonBackgroundColorDark">#000000</color> <!-- Changed from #222222 to pure black -->
+    <color name="colorBackground">#0A0A0A</color>
+    <color name="colorBackgroundDark">#000000</color> <!-- True black for specific elements if needed -->
+    <color name="colorTextDark">#DDFFFFFF</color>
+    <color name="colorText">#E0E0E0</color> <!-- Lighter text for dark theme -->
+</resources>

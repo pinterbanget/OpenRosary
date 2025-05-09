@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:colorBackground"
+    tools:context=".WelcomeActivity">
+
+    <!-- Larger title text as per mockup -->
+    <TextView
+        android:id="@+id/welcomeTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="36sp"
+        android:textColor="?android:attr/textColor"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+
+        <!-- Smaller theme selection text -->
+        <TextView
+            android:id="@+id/themeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/choose_theme"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <!-- Centered theme switch layout with emoji indicators -->
+        <LinearLayout
+            android:id="@+id/themeToggleContainer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/lightThemeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="☀️"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/themeToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/thumb_selector"
+                app:track="@drawable/track_selector" />
+
+            <TextView
+                android:id="@+id/darkThemeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌙"
+                android:layout_marginStart="8dp"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <!-- Keep the themeSpinner hidden for compatibility -->
+        <Spinner
+            android:id="@+id/themeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/languageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/choose_language"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <Spinner
+            android:id="@+id/languageSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/spinner_bordered_background"
+            android:popupBackground="@drawable/dropdown_background_rounded"
+            android:dropDownWidth="match_parent"
+            android:dropDownHorizontalOffset="0dp" /> <!-- align dropdown with spinner width -->
+    </LinearLayout>
+
+    <!-- Removed welcome message as requested -->
+
+    <Button
+        android:id="@+id/startButton"
+        style="?attr/startButtonColorOnlyStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/start_button" /> <!-- Removed hardcoded textColor -->
+
+</LinearLayout>

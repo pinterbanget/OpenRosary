@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Info -->
+    <string name="app_name">OpenRosary</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_message">Welcome to OpenRosary\nA minimalistic rosary prayer counter</string>
+    <string name="choose_theme">Choose Theme:</string>
+    <string name="theme">Theme</string>
+    <string name="choose_language">Choose Language:</string>
+    <string name="start_button">Start</string>
+    
+    <!-- Theme Options -->
+    <string name="theme_light">Light</string>
+    <string name="theme_amoled">Dark (AMOLED)</string>
+    <string name="theme_switch_label">Switch Theme</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    
+    <!-- Language Options -->
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_indonesian" translatable="false">Bahasa Indonesia</string>
+    
+    <!-- Mysteries Titles -->
+    <string name="choose_mysteries">Choose Mysteries</string>
+    <string name="joyful_mysteries">Joyful Mysteries</string>
+    <string name="sorrowful_mysteries">Sorrowful Mysteries</string>
+    <string name="glorious_mysteries">Glorious Mysteries</string>
+    <string name="luminous_mysteries">Luminous Mysteries</string>
+    
+    <!-- Counter Screen -->
+    <string name="counter_instructions">Press Volume Down to count up\nPress Volume Up to count down</string>
+    <string name="general_options">General Options</string>
+    
+    <!-- Rosary Instructions -->
+    <string name="rosary_instructions">Press Volume Down or swipe left to advance through the rosary</string>
+    
+    <!-- Dialog Buttons -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exit_confirmation_title">Exit Rosary?</string>
+    <string name="exit_confirmation_message">Do you want to return to the mystery selection screen?</string>
+    <string name="continue_button">Continue</string>
+    
+    <!-- General labels -->
+    <string name="mystery">Mystery</string>
+    <string name="prayer">Prayer</string>
+    <string name="complete">Complete</string>
+    <string name="mystery_label">Mystery #%d</string>
+
+    <!-- Rosary Completion -->
+    <string name="completion_title">Rosary Complete</string>
+    <string name="continue_iterate">You have finished the rosary. God bless you!</string>
+    
+    <!-- Mystery type names -->
+    <string name="mystery_type_joyful">Joyful</string>
+    <string name="mystery_type_sorrowful">Sorrowful</string>
+    <string name="mystery_type_glorious">Glorious</string>
+    <string name="mystery_type_luminous">Luminous</string>
+    
+    <!-- Mystery announcement format -->
+    <string name="mystery_announcement_format">%2$s Mystery #%1$d: %3$s</string>
+    
+    <!-- Arrays -->
+    <string-array name="theme_options">
+        <item>@string/theme_light</item>
+        <item>@string/theme_amoled</item>
+    </string-array>
+</resources>
