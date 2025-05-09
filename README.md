@@ -1,3 +1,5 @@
+<div align="center"> <img src="repo_banner.png"> </div>
+
 # OpenRosary
 
 OpenRosary is a simple, beautiful, and easy-to-use app designed to help you pray the Rosary. Whether you're new to this devotion or have been praying it for years, OpenRosary offers a focused and distraction-free experience.
