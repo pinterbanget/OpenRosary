@@ -4,63 +4,343 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context=".ChoicesActivity">
 
+    <!-- Title Section -->
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choose_mysteries"
-        android:textSize="32sp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_marginTop="64dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginTop="48dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/mysteriesLayout"
+    <!-- Mysteries Grid Container -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView">
-
-        <Button
-            android:id="@+id/joyfulMysteriesButton"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintBottom_toTopOf="@id/generalOptionsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/joyful_mysteries"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+            android:orientation="vertical"
+            android:paddingBottom="16dp">            <!-- Joyful Mysteries Section -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
 
-        <Button
-            android:id="@+id/sorrowfulMysteriesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sorrowful_mysteries"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+                <!-- Joyful Mysteries Card -->
+                <LinearLayout
+                    android:id="@+id/joyfulMysteriesCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/mystery_card_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-        <Button
-            android:id="@+id/gloriousMysteriesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/glorious_mysteries"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
+                    <!-- Mystery Image Placeholder -->
+                    <ImageView
+                        android:id="@+id/joyfulImagePlaceholder"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/mystery_image_placeholder"
+                        android:src="@drawable/ic_joyful_placeholder"
+                        android:contentDescription="@string/joyful_mysteries" />
 
-        <Button
-            android:id="@+id/luminousMysteriesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/luminous_mysteries"
-            android:layout_marginBottom="16dp"
-            android:padding="12dp"/>
-    </LinearLayout>
+                    <!-- Mystery Content -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">                        <!-- Mystery Title -->
+                        <TextView
+                            android:id="@+id/joyfulTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/joyful_mysteries"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="6dp" />
 
+                        <!-- Mystery Description -->
+                        <TextView
+                            android:id="@+id/joyfulDescriptionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/joyful_description"
+                            android:textSize="13sp"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Recommendation Pill - Overlapping top border -->
+                <TextView
+                    android:id="@+id/joyfulRecommendationPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/recommended_for_today"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/colorBackground"
+                    android:background="@drawable/recommendation_pill"
+                    android:paddingHorizontal="12dp"
+                    android:visibility="gone" />
+
+            </FrameLayout>            <!-- Sorrowful Mysteries Section -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <!-- Sorrowful Mysteries Card -->
+                <LinearLayout
+                    android:id="@+id/sorrowfulMysteriesCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/mystery_card_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- Mystery Image Placeholder -->
+                    <ImageView
+                        android:id="@+id/sorrowfulImagePlaceholder"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/mystery_image_placeholder"
+                        android:src="@drawable/ic_sorrowful_placeholder"
+                        android:contentDescription="@string/sorrowful_mysteries" />
+
+                    <!-- Mystery Content -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">                        <!-- Mystery Title -->
+                        <TextView
+                            android:id="@+id/sorrowfulTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sorrowful_mysteries"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="6dp" />
+
+                        <!-- Mystery Description -->
+                        <TextView
+                            android:id="@+id/sorrowfulDescriptionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sorrowful_description"
+                            android:textSize="13sp"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Recommendation Pill - Overlapping top border -->
+                <TextView
+                    android:id="@+id/sorrowfulRecommendationPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/recommended_for_today"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/colorBackground"
+                    android:background="@drawable/recommendation_pill"
+                    android:paddingHorizontal="12dp"
+                    android:visibility="gone" />
+
+            </FrameLayout>            <!-- Glorious Mysteries Section -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <!-- Glorious Mysteries Card -->
+                <LinearLayout
+                    android:id="@+id/gloriousMysteriesCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/mystery_card_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- Mystery Image Placeholder -->
+                    <ImageView
+                        android:id="@+id/gloriousImagePlaceholder"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/mystery_image_placeholder"
+                        android:src="@drawable/ic_glorious_placeholder"
+                        android:contentDescription="@string/glorious_mysteries" />
+
+                    <!-- Mystery Content -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">                        <!-- Mystery Title -->
+                        <TextView
+                            android:id="@+id/gloriousTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/glorious_mysteries"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="6dp" />
+
+                        <!-- Mystery Description -->
+                        <TextView
+                            android:id="@+id/gloriousDescriptionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/glorious_description"
+                            android:textSize="13sp"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Recommendation Pill - Overlapping top border -->
+                <TextView
+                    android:id="@+id/gloriousRecommendationPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/recommended_for_today"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/colorBackground"
+                    android:background="@drawable/recommendation_pill"
+                    android:paddingHorizontal="12dp"
+                    android:visibility="gone" />
+
+            </FrameLayout>            <!-- Luminous Mysteries Section -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <!-- Luminous Mysteries Card -->
+                <LinearLayout
+                    android:id="@+id/luminousMysteriesCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/mystery_card_border"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- Mystery Image Placeholder -->
+                    <ImageView
+                        android:id="@+id/luminousImagePlaceholder"
+                        android:layout_width="68dp"
+                        android:layout_height="68dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/mystery_image_placeholder"
+                        android:src="@drawable/ic_luminous_placeholder"
+                        android:contentDescription="@string/luminous_mysteries" />
+
+                    <!-- Mystery Content -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical">                        <!-- Mystery Title -->
+                        <TextView
+                            android:id="@+id/luminousTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/luminous_mysteries"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="6dp" />
+
+                        <!-- Mystery Description -->
+                        <TextView
+                            android:id="@+id/luminousDescriptionText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/luminous_description"
+                            android:textSize="13sp"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Recommendation Pill - Overlapping top border -->
+                <TextView
+                    android:id="@+id/luminousRecommendationPill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/recommended_for_today"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/colorBackground"
+                    android:background="@drawable/recommendation_pill"
+                    android:paddingHorizontal="12dp"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- General Options Button -->
     <Button
         android:id="@+id/generalOptionsButton"
         style="?attr/mysteryButtonStyle"
@@ -70,7 +350,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
-        android:padding="12dp"
+        android:padding="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -23,7 +23,13 @@
     <string name="sorrowful_mysteries">Peristiwa Sedih</string>
     <string name="glorious_mysteries">Peristiwa Mulia</string>
     <string name="luminous_mysteries">Peristiwa Terang</string>
-    
+    <string name="recommended_for_today">Disarankan untuk hari ini</string>
+      <!-- Mystery Descriptions -->
+    <string name="joyful_description">Peristiwa sukacita dan perayaan dalam hidup Kristus</string>
+    <string name="sorrowful_description">Peristiwa sengsara dan penderitaan Kristus</string>
+    <string name="glorious_description">Peristiwa kebangkitan dan kemenangan Kristus</string>
+    <string name="luminous_description">Peristiwa pelayanan publik dan terang Kristus</string>
+
     <!-- Counter Screen -->
     <string name="counter_instructions">Tekan Volume Bawah untuk menghitung naik\nTekan Volume Atas untuk menghitung turun</string>
     <string name="general_options">Opsi Umum</string>

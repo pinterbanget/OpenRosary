@@ -52,12 +52,10 @@
         <item name="android:background">@drawable/start_button_background</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:padding">12dp</item>
-    </style>
-
-    <!-- Style for Start Button (Dark Theme) -->
+    </style>    <!-- Style for Start Button (Dark Theme) -->
     <style name="StartButtonDark">
         <item name="android:background">@drawable/start_button_background</item> <!-- Changed to use the base name -->
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:padding">12dp</item>
     </style>
 </resources>

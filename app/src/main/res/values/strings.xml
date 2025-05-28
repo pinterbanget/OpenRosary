@@ -21,12 +21,19 @@
     <string name="language_english" translatable="false">English</string>
     <string name="language_indonesian" translatable="false">Bahasa Indonesia</string>
     
-    <!-- Mysteries Titles -->
+      <!-- Mysteries Titles -->
     <string name="choose_mysteries">Choose Mysteries</string>
     <string name="joyful_mysteries">Joyful Mysteries</string>
     <string name="sorrowful_mysteries">Sorrowful Mysteries</string>
     <string name="glorious_mysteries">Glorious Mysteries</string>
     <string name="luminous_mysteries">Luminous Mysteries</string>
+    <string name="recommended_for_today">Recommended for today</string>
+    
+    <!-- Mystery Descriptions -->
+    <string name="joyful_description">Mysteries of joy and celebration in the life of Christ</string>
+    <string name="sorrowful_description">Mysteries of Christ\'s passion and suffering</string>
+    <string name="glorious_description">Mysteries of Christ\'s resurrection and triumph</string>
+    <string name="luminous_description">Mysteries of Christ\'s public ministry and light</string>
     
     <!-- Counter Screen -->
     <string name="counter_instructions">Press Volume Down to count up\nPress Volume Up to count down</string>
