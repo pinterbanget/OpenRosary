@@ -51,17 +51,15 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:background="@drawable/mystery_card_border"
                     android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <!-- Mystery Image Placeholder -->
+                    android:padding="16dp">                    <!-- Mystery Image -->
                     <ImageView
                         android:id="@+id/joyfulImagePlaceholder"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/mystery_image_placeholder"
-                        android:src="@drawable/ic_joyful_placeholder"
+                        android:src="@drawable/ic_joyful"
+                        android:scaleType="centerCrop"
                         android:contentDescription="@string/joyful_mysteries" />
 
                     <!-- Mystery Content -->
@@ -126,17 +124,15 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:background="@drawable/mystery_card_border"
                     android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <!-- Mystery Image Placeholder -->
+                    android:padding="16dp">                    <!-- Mystery Image -->
                     <ImageView
                         android:id="@+id/sorrowfulImagePlaceholder"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/mystery_image_placeholder"
-                        android:src="@drawable/ic_sorrowful_placeholder"
+                        android:src="@drawable/ic_sorrowful"
+                        android:scaleType="centerCrop"
                         android:contentDescription="@string/sorrowful_mysteries" />
 
                     <!-- Mystery Content -->
@@ -201,17 +197,15 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:background="@drawable/mystery_card_border"
                     android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <!-- Mystery Image Placeholder -->
+                    android:padding="16dp">                    <!-- Mystery Image -->
                     <ImageView
                         android:id="@+id/gloriousImagePlaceholder"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/mystery_image_placeholder"
-                        android:src="@drawable/ic_glorious_placeholder"
+                        android:src="@drawable/ic_glorious"
+                        android:scaleType="centerCrop"
                         android:contentDescription="@string/glorious_mysteries" />
 
                     <!-- Mystery Content -->
@@ -276,17 +270,15 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:background="@drawable/mystery_card_border"
                     android:orientation="horizontal"
-                    android:padding="16dp">
-
-                    <!-- Mystery Image Placeholder -->
+                    android:padding="16dp">                    <!-- Mystery Image -->
                     <ImageView
                         android:id="@+id/luminousImagePlaceholder"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="16dp"
-                        android:background="@drawable/mystery_image_placeholder"
-                        android:src="@drawable/ic_luminous_placeholder"
+                        android:src="@drawable/ic_luminous"
+                        android:scaleType="centerCrop"
                         android:contentDescription="@string/luminous_mysteries" />
 
                     <!-- Mystery Content -->
