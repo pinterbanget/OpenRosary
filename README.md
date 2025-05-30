@@ -4,7 +4,7 @@
 
 OpenRosary is a simple, beautiful, and easy-to-use app designed to help you pray the Rosary. Whether you're new to this devotion or have been praying it for years, OpenRosary offers a focused and distraction-free experience.
 
-[Download](https://github.com/pinterbanget/OpenRosary/releases/download/alpha/OpenRosary-v0.1.apk)
+[Download](https://github.com/pinterbanget/OpenRosary/releases/download/alpha/OpenRosary-v0.2.apk) (current version: 0.2)
 
 ## Features
 
@@ -34,6 +34,16 @@ This project is open source and contributions are welcome! Whether it's adding n
 ## Feedback
 
 If you have any feedback, suggestions, or encounter any issues, please feel free to open an issue on the GitHub repository.
+
+## Attributes
+
+* Joyful Mysteries Icon: Image by <a href="https://pixabay.com/users/denisdoukhan-607002/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=673318">Denis Doukhan</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=673318">Pixabay</a>
+
+* Sorrowful and Glorious Mysteries Icons: Image by <a href="https://pixabay.com/users/falco-81448/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=540486">falco</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=540486">Pixabay</a>
+
+* Luminous Mysteries Icon: Image by <a href="https://pixabay.com/users/ginigeo_photography-5491779/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4899770">Gini George</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4899770">Pixabay</a>
+
+(These icons are made as placeholders. If you want to volunteer to create minimalistic-style icons, please let me know.)
 
 ---
 

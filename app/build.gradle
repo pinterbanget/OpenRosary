@@ -11,7 +11,7 @@ android {
         minSdk 26  // Updated from 21 to 26 to support adaptive icons
         targetSdk 33
         versionCode 1
-        versionName "0.1"
+        versionName "0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
