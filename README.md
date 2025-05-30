@@ -4,7 +4,7 @@
 
 OpenRosary is a simple, beautiful, and easy-to-use app designed to help you pray the Rosary. Whether you're new to this devotion or have been praying it for years, OpenRosary offers a focused and distraction-free experience.
 
-[Download](https://github.com/pinterbanget/OpenRosary/releases/download/alpha/OpenRosary-v0.2.apk) (current version: 0.2)
+[Download](https://github.com/pinterbanget/OpenRosary/releases/download/beta/OpenRosary-v0.2.apk) (current version: 0.2)
 
 ## Features
 
