@@ -48,60 +48,85 @@
                 android:textStyle="bold"
                 android:textColor="?android:attr/textColorPrimary"
                 android:layout_marginBottom="16dp"
-                android:gravity="center" />
-
-            <!-- Description -->
-            <TextView
-                android:id="@+id/appDescriptionTextView"
+                android:gravity="center" />            <!-- Description Section with Gray Background -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_info_description"
-                android:textSize="14sp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:layout_marginBottom="24dp"
-                android:lineSpacingMultiplier="1.3" />
+                android:orientation="vertical"
+                android:background="@drawable/prayer_text_background"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
 
-            <!-- Features Section -->
-            <TextView
-                android:id="@+id/featuresHeaderTextView"
+                <TextView
+                    android:id="@+id/appDescriptionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_info_description"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:lineSpacingMultiplier="1.3" />
+
+            </LinearLayout>
+
+            <!-- Features Section with Gray Background -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_info_features_header"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="?android:attr/textColorPrimary"
-                android:layout_marginBottom="8dp" />
+                android:orientation="vertical"
+                android:background="@drawable/prayer_text_background"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp">
 
-            <TextView
-                android:id="@+id/featuresTextView"
+                <TextView
+                    android:id="@+id/featuresHeaderTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_info_features_header"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/featuresTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_info_features"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:lineSpacingMultiplier="1.3" />
+
+            </LinearLayout>
+
+            <!-- Attribution Section with Gray Background -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_info_features"
-                android:textSize="14sp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:layout_marginBottom="24dp"
-                android:lineSpacingMultiplier="1.3" />
+                android:orientation="vertical"
+                android:background="@drawable/prayer_text_background"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp">
 
-            <!-- Attribution Section -->
-            <TextView
-                android:id="@+id/attributionHeaderTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_info_attribution_header"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="?android:attr/textColorPrimary"
-                android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/attributionHeaderTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_info_attribution_header"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:layout_marginBottom="8dp" />
 
-            <TextView
-                android:id="@+id/attributionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_info_attribution"
-                android:textSize="14sp"
-                android:textColor="?android:attr/textColorSecondary"
-                android:layout_marginBottom="16dp"
-                android:lineSpacingMultiplier="1.3" />
+                <TextView
+                    android:id="@+id/attributionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_info_attribution"
+                    android:textSize="14sp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:lineSpacingMultiplier="1.3" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

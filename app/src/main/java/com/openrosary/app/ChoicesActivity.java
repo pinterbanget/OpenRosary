@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -94,16 +95,15 @@ public class ChoicesActivity extends BaseActivity {
         }
     }    private void setupBottomButtons() {
         try {
-            // For now, let's use a simpler approach: always show fixed bottom buttons
-            // Later we can implement dynamic positioning based on screen size
+            // Just use fixed bottom buttons for now to avoid the positioning complexity
             LinearLayout fixedBottomLayout = findViewById(R.id.fixedBottomButtonsLayout);
             LinearLayout scrollableBottomLayout = findViewById(R.id.scrollableBottomButtonsLayout);
             
-            if (fixedBottomLayout != null && scrollableBottomLayout != null) {
-                // Show fixed bottom buttons, hide scrollable ones for now
+            if (fixedBottomLayout != null) {
                 fixedBottomLayout.setVisibility(View.VISIBLE);
+            }
+            if (scrollableBottomLayout != null) {
                 scrollableBottomLayout.setVisibility(View.GONE);
-                Log.d(TAG, "Using fixed bottom buttons");
             }
             
             // Set up click listeners for both sets of buttons
@@ -112,8 +112,7 @@ public class ChoicesActivity extends BaseActivity {
         } catch (Exception e) {
             Log.e(TAG, "Error setting up bottom buttons: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
-    }
-    
+    }    
     private void setupButtonClickListeners() {
         try {
             // Fixed bottom buttons
