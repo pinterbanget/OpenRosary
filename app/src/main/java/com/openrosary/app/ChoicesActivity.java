@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class ChoicesActivity extends BaseActivity {
@@ -36,15 +37,14 @@ public class ChoicesActivity extends BaseActivity {
                 } else {
                     titleTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
                 }
-            }
-              // Set up mystery cards
+            }            // Set up mystery cards
             setupMysteryCards();
             
             // Update mystery card text colors based on theme
             updateMysteryCardTextColors();
             
-            // Set up general options button
-            setupGeneralOptionsButton();
+            // Set up bottom buttons
+            setupBottomButtons();
             
         } catch (Exception e) {
             Log.e(TAG, "Error in onCreate: " + (e.getMessage() != null ? e.getMessage() : "unknown"));        }
@@ -70,21 +70,14 @@ public class ChoicesActivity extends BaseActivity {
             LinearLayout gloriousCard = findViewById(R.id.gloriousMysteriesCard);
             TextView gloriousRecommendationPill = findViewById(R.id.gloriousRecommendationPill);
             setupMysteryCard(gloriousCard, "glorious", suggestedMystery, gloriousRecommendationPill, recommendationText);
-            
-            // Setup Luminous Mysteries card
+              // Setup Luminous Mysteries card
             LinearLayout luminousCard = findViewById(R.id.luminousMysteriesCard);
             TextView luminousRecommendationPill = findViewById(R.id.luminousRecommendationPill);
             setupMysteryCard(luminousCard, "luminous", suggestedMystery, luminousRecommendationPill, recommendationText);
             
-            // Set general options button text
-            Button generalOptionsButton = findViewById(R.id.generalOptionsButton);
-            if (generalOptionsButton != null) {
-                generalOptionsButton.setText(R.string.general_options);
-            }
-            
         } catch (Exception e) {
             Log.e(TAG, "Error setting up mystery cards: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-        }    }
+        }}
       private void setupMysteryCard(LinearLayout card, String mysteryType, String suggestedMystery,
                                  TextView recommendationPill, String recommendationText) {
         if (card != null) {
@@ -99,22 +92,60 @@ public class ChoicesActivity extends BaseActivity {
                 recommendationPill.setVisibility(View.GONE);
             }
         }
+    }    private void setupBottomButtons() {
+        try {
+            // For now, let's use a simpler approach: always show fixed bottom buttons
+            // Later we can implement dynamic positioning based on screen size
+            LinearLayout fixedBottomLayout = findViewById(R.id.fixedBottomButtonsLayout);
+            LinearLayout scrollableBottomLayout = findViewById(R.id.scrollableBottomButtonsLayout);
+            
+            if (fixedBottomLayout != null && scrollableBottomLayout != null) {
+                // Show fixed bottom buttons, hide scrollable ones for now
+                fixedBottomLayout.setVisibility(View.VISIBLE);
+                scrollableBottomLayout.setVisibility(View.GONE);
+                Log.d(TAG, "Using fixed bottom buttons");
+            }
+            
+            // Set up click listeners for both sets of buttons
+            setupButtonClickListeners();
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Error setting up bottom buttons: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+        }
     }
     
-    private void setupGeneralOptionsButton() {
-        Button generalOptionsButton = findViewById(R.id.generalOptionsButton);
-        if (generalOptionsButton != null) {
-            generalOptionsButton.setOnClickListener(v -> {
+    private void setupButtonClickListeners() {
+        try {
+            // Fixed bottom buttons
+            Button fixedOptionsButton = findViewById(R.id.fixedOptionsButton);
+            Button fixedInfoButton = findViewById(R.id.fixedInfoButton);
+            
+            // Scrollable bottom buttons
+            Button scrollableOptionsButton = findViewById(R.id.scrollableOptionsButton);
+            Button scrollableInfoButton = findViewById(R.id.scrollableInfoButton);
+            
+            // Options button click listener
+            View.OnClickListener optionsClickListener = v -> {
                 Intent intent = new Intent(ChoicesActivity.this, WelcomeActivity.class);
-                // Clear the task stack above WelcomeActivity and bring it to front,
-                // or start it fresh if not running.
-                // Added FLAG_ACTIVITY_NEW_TASK for potentially more robust clearing.
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-                finish(); // Finish ChoicesActivity so it's removed from the back stack
-            });
-        } else {
-             Log.e("ChoicesActivity", "General Options button not found!");
+                finish();
+            };
+            
+            // Info button click listener
+            View.OnClickListener infoClickListener = v -> {
+                Intent intent = new Intent(ChoicesActivity.this, InfoActivity.class);
+                startActivity(intent);
+            };
+            
+            // Apply listeners to both sets of buttons
+            if (fixedOptionsButton != null) fixedOptionsButton.setOnClickListener(optionsClickListener);
+            if (fixedInfoButton != null) fixedInfoButton.setOnClickListener(infoClickListener);
+            if (scrollableOptionsButton != null) scrollableOptionsButton.setOnClickListener(optionsClickListener);
+            if (scrollableInfoButton != null) scrollableInfoButton.setOnClickListener(infoClickListener);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Error setting up button click listeners: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
     }
     

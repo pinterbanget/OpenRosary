@@ -19,22 +19,22 @@
         android:layout_marginTop="48dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Mysteries Grid Container -->
+        app:layout_constraintEnd_toEndOf="parent" />    <!-- Main Content Container -->
     <ScrollView
+        android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
         android:paddingHorizontal="16dp"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
-        app:layout_constraintBottom_toTopOf="@id/generalOptionsButton"
+        app:layout_constraintBottom_toTopOf="@id/fixedBottomButtonsLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">        <LinearLayout
+            android:id="@+id/mysteriesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="16dp">            <!-- Joyful Mysteries Section -->
+            android:paddingBottom="16dp"><!-- Joyful Mysteries Section -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -324,28 +324,92 @@
                     android:textColor="?android:attr/colorBackground"
                     android:background="@drawable/recommendation_pill"
                     android:paddingHorizontal="12dp"
-                    android:visibility="gone" />
+                    android:visibility="gone" />            </FrameLayout>
 
-            </FrameLayout>
+            <!-- Scrollable Bottom Buttons (shown when content doesn't fit) -->
+            <LinearLayout
+                android:id="@+id/scrollableBottomButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone">
 
-        </LinearLayout>
+                <!-- Options Button -->
+                <Button
+                    android:id="@+id/scrollableOptionsButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/options"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:background="@drawable/rectangular_button_style"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground" />
 
-    </ScrollView>
+                <!-- Info Button -->
+                <Button
+                    android:id="@+id/scrollableInfoButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/info"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:background="@drawable/rectangular_button_style"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground" />
 
-    <!-- General Options Button -->
-    <Button
-        android:id="@+id/generalOptionsButton"
-        style="?attr/mysteryButtonStyle"
+            </LinearLayout>
+
+        </LinearLayout></ScrollView>    <!-- Fixed Bottom buttons layout (shown when content fits) -->
+    <LinearLayout
+        android:id="@+id/fixedBottomButtonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/general_options"
+        android:orientation="horizontal"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
-        android:padding="16dp"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Options Button -->
+        <Button
+            android:id="@+id/fixedOptionsButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="@string/options"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="@drawable/rectangular_button_style"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground" />        <!-- Info Button -->
+        <Button
+            android:id="@+id/fixedInfoButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/info"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="@drawable/rectangular_button_style"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
