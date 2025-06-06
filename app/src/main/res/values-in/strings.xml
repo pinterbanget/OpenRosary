@@ -24,7 +24,8 @@
     <string name="glorious_mysteries">Peristiwa Mulia</string>
     <string name="luminous_mysteries">Peristiwa Terang</string>
     <string name="recommended_for_today">Disarankan untuk hari ini</string>
-      <!-- Mystery Descriptions -->
+    
+    <!-- Mystery Descriptions -->
     <string name="joyful_description">Peristiwa sukacita dan perayaan dalam hidup Kristus</string>
     <string name="sorrowful_description">Peristiwa sengsara dan penderitaan Kristus</string>
     <string name="glorious_description">Peristiwa kebangkitan dan kemenangan Kristus</string>
@@ -32,7 +33,21 @@
 
     <!-- Counter Screen -->
     <string name="counter_instructions">Tekan Volume Bawah untuk menghitung naik\nTekan Volume Atas untuk menghitung turun</string>
-    <string name="general_options">Opsi Umum</string>
+    <string name="options">Opsi</string>
+    <string name="info">Info</string>
+    <string name="back">Kembali</string>
+    
+    <!-- Info Screen -->
+    <string name="app_info_title">Informasi</string>
+    
+    <!-- Combined Info Content -->
+    <string name="app_info_content">OpenRosary v0.2.1\n\nDibuat dan dikelola oleh pinterbanget.\n\nKontributor\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023\n\nAtribusi Gambar\n\nIkon Peristiwa:\n• Peristiwa Gembira: Denis Doukhan dari Pixabay\n• Peristiwa Sedih dan Mulia: falco dari Pixabay\n• Peristiwa Terang: Gini George dari Pixabay</string>
+    
+    <!-- Update Checker -->
+    <string name="update_available_title">Pembaruan Tersedia</string>
+    <string name="update_available_message">Versi baru tersedia. Apakah Anda ingin mengunduhnya?</string>
+    <string name="update_download">Unduh</string>
+    <string name="update_later">Nanti</string>
     
     <!-- Rosary Instructions -->
     <string name="rosary_instructions">Tekan Volume Bawah atau geser ke kiri untuk melanjutkan Rosario</string>
@@ -42,6 +57,7 @@
     <string name="no">Tidak</string>
     <string name="exit_confirmation_title">Keluar?</string>
     <string name="exit_confirmation_message">Apakah kamu ingin kembali ke pemilihan peristiwa?</string>
+    <string name="continue_button">Lanjut</string>
     
     <!-- General labels -->
     <string name="mystery">Peristiwa</string>

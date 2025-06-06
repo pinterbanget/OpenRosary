@@ -7,6 +7,7 @@
     <color name="textColorDark">#DDFFFFFF</color>
     <color name="backgroundColorLight">#FFFFFF</color>
     <color name="backgroundColorAmoled">#000000</color>
+    <color name="buttonBackgroundColorDark">#222222</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorBackgroundDark">#121212</color>
     <color name="colorTextDark">#DDFFFFFF</color>

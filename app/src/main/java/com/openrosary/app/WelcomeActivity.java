@@ -31,9 +31,7 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
 
     private static final String TAG = "WelcomeActivity";
     private static final int SWIPE_THRESHOLD = 100;
-    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    
-    private Spinner themeSpinner;
+    private static final int SWIPE_VELOCITY_THRESHOLD = 100;    private Spinner themeSpinner;
     private Spinner languageSpinner;
     private Button startButton;
     private SwitchCompat themeToggle;
@@ -58,30 +56,27 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
             isDarkMode = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
             
             initializeViews();
-            setupGestureDetector();
-            setupThemeControls(); // Uses isDarkMode
+            setupGestureDetector();            setupThemeControls(); // Uses isDarkMode
             setupLanguageSpinner(); // Listener is NOT set here anymore
             setupStartButton();
-            
-            // ADDED: Delay setting the listener until after initial layout
+              // ADDED: Delay setting the listener until after initial layout
             if (languageSpinner != null) {
                 languageSpinner.post(() -> languageSpinner.setOnItemSelectedListener(WelcomeActivity.this));
-            }
+            }              // Check for app updates
+            checkForUpdates();
 
         } catch (Exception e) {
             Log.e(TAG, "Error in onCreate: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
     }
     
-    private void initializeViews() {
-        try {
+    private void initializeViews() {        try {
             themeTextView = findViewById(R.id.themeTextView);
             themeSpinner = findViewById(R.id.themeSpinner);
             themeToggle = findViewById(R.id.themeToggle);
             lightThemeText = findViewById(R.id.lightThemeText);
             darkThemeText = findViewById(R.id.darkThemeText);
-            themeToggleContainer = findViewById(R.id.themeToggleContainer);
-            languageSpinner = findViewById(R.id.languageSpinner);
+            themeToggleContainer = findViewById(R.id.themeToggleContainer);            languageSpinner = findViewById(R.id.languageSpinner);
             startButton = findViewById(R.id.startButton);
         } catch (Exception e) {
             Log.e(TAG, "Error initializing views: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
@@ -139,16 +134,13 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
                     }
                 });
                 startButton.setText(R.string.start_button);
-            }
-        } catch (Exception e) {
+            }        } catch (Exception e) {
             Log.e(TAG, "Error setting up start button: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
-    }
-
-    private void handleThemeToggleChange(boolean isChecked) {
+    }    private void handleThemeToggleChange(boolean isChecked) {
         try {
             // Save the preference first
-            saveThemePreference(isChecked); 
+            saveThemePreference(isChecked);
             
             // Set the default night mode for the app process
             // BaseActivity will apply the correct theme on recreate
@@ -472,12 +464,20 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
             // Update text color based on theme
             ((TextView) view).setTextColor(getResources().getColor(isDarkMode ? 
                 R.color.colorAccent : 
-                R.color.colorPrimary));
-        } else if (view instanceof ViewGroup) {
+                R.color.colorPrimary));        } else if (view instanceof ViewGroup) {
             ViewGroup viewGroup = (ViewGroup) view;
             for (int i = 0; i < viewGroup.getChildCount(); i++) {
                 updateTextViewColors(viewGroup.getChildAt(i));
             }
+        }
+    }
+    
+    private void checkForUpdates() {
+        try {
+            UpdateChecker updateChecker = new UpdateChecker(this);
+            updateChecker.checkForUpdates();
+        } catch (Exception e) {
+            Log.e(TAG, "Error checking for updates: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
     }
 }

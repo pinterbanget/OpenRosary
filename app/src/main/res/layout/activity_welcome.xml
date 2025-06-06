@@ -95,10 +95,7 @@
             android:background="@drawable/spinner_bordered_background"
             android:popupBackground="@drawable/dropdown_background_rounded"
             android:dropDownWidth="match_parent"
-            android:dropDownHorizontalOffset="0dp" /> <!-- align dropdown with spinner width -->
-    </LinearLayout>
-
-    <!-- Removed welcome message as requested -->
+            android:dropDownHorizontalOffset="0dp" /> <!-- align dropdown with spinner width -->    </LinearLayout>    <!-- Removed welcome message as requested -->
 
     <Button
         android:id="@+id/startButton"
