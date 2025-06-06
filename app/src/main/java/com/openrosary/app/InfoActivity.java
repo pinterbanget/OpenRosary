@@ -32,37 +32,19 @@ public class InfoActivity extends BaseActivity {
         } catch (Exception e) {
             Log.e(TAG, "Error in onCreate: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
-    }
-
-    private void updateTextColors() {
+    }    private void updateTextColors() {
         try {
             int primaryTextColor = isDarkMode ? 
                 getResources().getColor(R.color.colorAccent) : 
                 getResources().getColor(R.color.colorPrimary);
             
-            int secondaryTextColor = isDarkMode ? 
-                getResources().getColor(R.color.colorAccent) : 
-                getResources().getColor(R.color.colorPrimary);
-            
-            // Update primary text elements
+            // Update title text color
             TextView infoTitleTextView = findViewById(R.id.infoTitleTextView);
-            TextView appNameTextView = findViewById(R.id.appNameTextView);
-            TextView featuresHeaderTextView = findViewById(R.id.featuresHeaderTextView);
-            TextView attributionHeaderTextView = findViewById(R.id.attributionHeaderTextView);
-            
             if (infoTitleTextView != null) infoTitleTextView.setTextColor(primaryTextColor);
-            if (appNameTextView != null) appNameTextView.setTextColor(primaryTextColor);
-            if (featuresHeaderTextView != null) featuresHeaderTextView.setTextColor(primaryTextColor);
-            if (attributionHeaderTextView != null) attributionHeaderTextView.setTextColor(primaryTextColor);
             
-            // Update secondary text elements
-            TextView appDescriptionTextView = findViewById(R.id.appDescriptionTextView);
-            TextView featuresTextView = findViewById(R.id.featuresTextView);
-            TextView attributionTextView = findViewById(R.id.attributionTextView);
-            
-            if (appDescriptionTextView != null) appDescriptionTextView.setTextColor(secondaryTextColor);
-            if (featuresTextView != null) featuresTextView.setTextColor(secondaryTextColor);
-            if (attributionTextView != null) attributionTextView.setTextColor(secondaryTextColor);
+            // Update content text color
+            TextView infoContentTextView = findViewById(R.id.infoContentTextView);
+            if (infoContentTextView != null) infoContentTextView.setTextColor(primaryTextColor);
             
         } catch (Exception e) {
             Log.e(TAG, "Error updating text colors: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
