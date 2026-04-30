@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -20,6 +21,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -46,6 +48,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
     private ScrollView prayerTextScrollView;
     private ProgressBar rosaryProgressBar;
     private TextView progressTextView;
+    private boolean isCompactCoverMode = false;
     
     // System services
     private Vibrator vibrator;
@@ -330,22 +333,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 prayerInfo = new PrayerInfo("", "");
             }
             
-            // Update prayer text
-            if (prayerTextView != null) {
-                String text = prayerInfo.prayerText != null ? prayerInfo.prayerText : "";
-                prayerTextView.setText(text);
-                
-                // Scroll to the top
-                if (prayerTextScrollView != null && safeHandler != null) {
-                    safeHandler.postSafeAction(new ScrollToTopRunnable(prayerTextScrollView));
-                }
-            }
-            
-            // Update prayer title/label
-            if (prayerLabelTextView != null) {
-                String title = prayerInfo.prayerTitle != null ? prayerInfo.prayerTitle : "";
-                prayerLabelTextView.setText(title);
-            }
+            renderPrayerContent(prayerInfo.prayerText, prayerInfo.prayerTitle);
             
             // Update mystery title
             updateMysteryTitle();
@@ -368,6 +356,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            isCompactCoverMode = shouldUseCompactCoverMode();
             
             // Initialize RosaryPrayers with application context to load prayers from resources
             RosaryPrayers.initialize(getApplicationContext());
@@ -429,23 +418,13 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 String textForUI = rosaryState.getPrayerTextByTotalCount(targetCountForDisplay);
                 String labelForUI = rosaryState.getPrayerLabelByTotalCount(targetCountForDisplay);
 
-                if (prayerTextView != null) {
-                    prayerTextView.setText(textForUI != null ? textForUI : "");
-                }
-                if (prayerLabelTextView != null) {
-                    prayerLabelTextView.setText(labelForUI != null ? labelForUI : "");
-                }
+                renderPrayerContent(textForUI, labelForUI);
             } else {
                 // No savedInstanceState bundle at all - completely fresh start
                 String initialPrayerText = rosaryState.advance(); // Advances to totalCount = 1
                 String initialPrayerLabel = rosaryState.getPrayerLabelByTotalCount(1); // Get label for totalCount = 1
 
-                if (prayerTextView != null) {
-                    prayerTextView.setText(initialPrayerText != null ? initialPrayerText : "");
-                }
-                if (prayerLabelTextView != null) {
-                    prayerLabelTextView.setText(initialPrayerLabel != null ? initialPrayerLabel : "");
-                }
+                renderPrayerContent(initialPrayerText, initialPrayerLabel);
             }
             
             // Update other UI elements
@@ -509,6 +488,85 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
         if (rosaryProgressBar != null) {
             rosaryProgressBar.setMax(80); // Total count for a complete rosary
         }
+
+        if (isCompactCoverMode) {
+            applyCompactCoverMode();
+        }
+    }
+
+    private boolean shouldUseCompactCoverMode() {
+        Configuration configuration = getResources().getConfiguration();
+        int screenWidthDp = configuration.screenWidthDp;
+        int screenHeightDp = configuration.screenHeightDp;
+        int shortSideDp = Math.min(screenWidthDp, screenHeightDp);
+        int longSideDp = Math.max(screenWidthDp, screenHeightDp);
+
+        return shortSideDp >= 260
+                && shortSideDp <= 430
+                && longSideDp <= 520;
+    }
+
+    private void applyCompactCoverMode() {
+        if (prayerTextScrollView != null) {
+            prayerTextScrollView.setVisibility(View.GONE);
+        }
+
+        if (prayerLabelTextView != null) {
+            prayerLabelTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28f);
+            prayerLabelTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            prayerLabelTextView.setGravity(android.view.Gravity.CENTER);
+        }
+
+        if (mysteryTitleTextView != null) {
+            mysteryTitleTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f);
+            mysteryTitleTextView.setMinLines(1);
+            mysteryTitleTextView.setMaxLines(1);
+        }
+
+        if (instructionsTextView != null) {
+            instructionsTextView.setVisibility(View.GONE);
+        }
+
+        if (progressTextView != null) {
+            progressTextView.setVisibility(View.GONE);
+        }
+
+        ConstraintLayout mainLayout = findViewById(R.id.mainLayout);
+        if (mainLayout != null) {
+            ConstraintSet constraintSet = new ConstraintSet();
+            constraintSet.clone(mainLayout);
+            constraintSet.setMargin(R.id.mysteryTitleTextView, ConstraintSet.TOP, dpToPx(16));
+            constraintSet.connect(R.id.prayerLabelTextView, ConstraintSet.TOP, R.id.mysteryTitleTextView, ConstraintSet.BOTTOM, dpToPx(12));
+            constraintSet.connect(R.id.prayerLabelTextView, ConstraintSet.BOTTOM, R.id.progressBarLayout, ConstraintSet.TOP, dpToPx(18));
+            constraintSet.setVerticalBias(R.id.prayerLabelTextView, 0.58f);
+            constraintSet.connect(R.id.progressBarLayout, ConstraintSet.TOP, R.id.prayerLabelTextView, ConstraintSet.BOTTOM, dpToPx(18));
+            constraintSet.connect(R.id.progressBarLayout, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, dpToPx(24));
+            constraintSet.constrainWidth(R.id.progressBarLayout, ConstraintSet.MATCH_CONSTRAINT);
+            constraintSet.setMargin(R.id.progressBarLayout, ConstraintSet.START, dpToPx(28));
+            constraintSet.setMargin(R.id.progressBarLayout, ConstraintSet.END, dpToPx(28));
+            constraintSet.applyTo(mainLayout);
+        }
+    }
+
+    private void renderPrayerContent(String prayerText, String prayerLabel) {
+        if (prayerLabelTextView != null) {
+            prayerLabelTextView.setText(prayerLabel != null ? prayerLabel : "");
+        }
+
+        if (prayerTextView != null) {
+            prayerTextView.setText(isCompactCoverMode ? "" : (prayerText != null ? prayerText : ""));
+        }
+
+        if (!isCompactCoverMode && prayerTextScrollView != null && safeHandler != null) {
+            safeHandler.postSafeAction(new ScrollToTopRunnable(prayerTextScrollView));
+        }
+    }
+
+    private int dpToPx(int dp) {
+        return Math.round(TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp,
+                Resources.getSystem().getDisplayMetrics()));
     }
     
     private void updateMysteryTitle() {
@@ -559,6 +617,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             }
             
             if (instructionsTextView != null) {
+                instructionsTextView.setVisibility(isCompactCoverMode ? View.GONE : View.VISIBLE);
                 instructionsTextView.setText(R.string.rosary_instructions);
             }
         } catch (Exception e) {
@@ -668,13 +727,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             rosaryState.goBack();
             
             // Update UI with our carefully retrieved values
-            if (prayerTextView != null) {
-                prayerTextView.setText(previousPrayerText);
-            }
-            
-            if (prayerLabelTextView != null) {
-                prayerLabelTextView.setText(previousPrayerLabel);
-            }
+            renderPrayerContent(previousPrayerText, previousPrayerLabel);
             
             // Update mystery title if we have one
             if (mysteryTitleTextView != null && !mysteryTitle.isEmpty()) {
@@ -686,11 +739,6 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             
             // Update progress bar (this will reflect the new count after goBack())
             updateProgressBar();
-            
-            // Scroll to top
-            if (prayerTextScrollView != null && safeHandler != null) {
-                safeHandler.postSafeAction(new ScrollToTopRunnable(prayerTextScrollView));
-            }
             
             // Two vibrations for backward navigation instead of one
             if (vibrator != null && vibrator.hasVibrator()) {
@@ -754,8 +802,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 if (wasAtMaxCount && rosaryState.isComplete() && rosaryState.getTotalCount() > rosaryState.getMaxCount()) {
                     checkCompletion(); // Call checkCompletion to show the dialog
                     // Clear the prayer text and label as there's no prayer after completion dialog
-                    if (prayerTextView != null) prayerTextView.setText("");
-                    if (prayerLabelTextView != null) prayerLabelTextView.setText(getString(R.string.complete)); // Or a specific "Completed" label
+                    renderPrayerContent("", getString(R.string.complete));
                     updateProgressBar(); // Update progress to show it's past the max
                     return; // Stop further UI updates for prayer text for this advance
                 }
@@ -765,15 +812,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 String nextPrayerLabel = rosaryState.getPrayerLabelByTotalCount(rosaryState.getTotalCount());
                 String mysteryTitle = rosaryState.getMysteryTitleByTotalCount(rosaryState.getTotalCount());
                 
-                // Update prayer text
-                if (prayerTextView != null) {
-                    prayerTextView.setText(nextPrayerText);
-                }
-                
-                // Update prayer label
-                if (prayerLabelTextView != null) {
-                    prayerLabelTextView.setText(nextPrayerLabel);
-                }
+                renderPrayerContent(nextPrayerText, nextPrayerLabel);
                 
                 // Update mystery title if we have one
                 if (mysteryTitleTextView != null && !mysteryTitle.isEmpty()) {
@@ -785,11 +824,6 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 
                 // Update progress bar
                 updateProgressBar();
-                
-                // Scroll to the top
-                if (prayerTextScrollView != null && safeHandler != null) {
-                    safeHandler.postSafeAction(new ScrollToTopRunnable(prayerTextScrollView));
-                }
                 
                 // DO NOT call checkCompletion() here anymore, it's called earlier if needed.
                 
@@ -1042,12 +1076,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             }
 
             if (prayerTextView != null) {
-                prayerTextView.setText(prayerText);
-
-                // Scroll to the top
-                if (prayerTextScrollView != null && safeHandler != null) {
-                    safeHandler.postSafeAction(new ScrollToTopRunnable(prayerTextScrollView));
-                }
+                renderPrayerContent(prayerText, prayerLabelTextView != null ? prayerLabelTextView.getText().toString() : "");
                 
                 // Update all UI elements to match the new state
                 updateAllUI();

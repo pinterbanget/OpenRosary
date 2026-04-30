@@ -16,6 +16,7 @@ public class RosaryPrayers {
 
     // Context for accessing resources
     private static Context context;
+    private static boolean useLatinPrayers;
 
     /**
      * Initialize the RosaryPrayers class with context.
@@ -34,6 +35,7 @@ public class RosaryPrayers {
             // Get the saved language preference to ensure we use the correct locale
             SharedPreferences settings = appContext.getSharedPreferences("SimpleRosaryPrefs", 0);
             String languageCode = settings.getString("language", "en");
+            useLatinPrayers = settings.getBoolean(BaseActivity.LATIN_PRAYERS_KEY, false);
             
             // Create Locale using the code ("en" or "in")
             Locale locale = new Locale(languageCode);
@@ -106,47 +108,31 @@ public class RosaryPrayers {
 
     // Getters for prayers - Modified to fetch directly from resources
     public static String getSignOfCross() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "In the name of the Father..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_sign_of_cross);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_sign_of_cross");
-            return "Error: Sign of Cross missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_sign_of_cross,
+                R.string.prayer_sign_of_cross_latin,
+                "In the name of the Father...");
     }
 
     public static String getApostlesCreed() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "I believe in God..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_apostles_creed);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_apostles_creed");
-            return "Error: Creed missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_apostles_creed,
+                R.string.prayer_apostles_creed_latin,
+                "I believe in God...");
     }
 
     public static String getOurFather() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "Our Father..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_our_father);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_our_father");
-            return "Error: Our Father missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_our_father,
+                R.string.prayer_our_father_latin,
+                "Our Father...");
     }
 
     public static String getHailMary() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "Hail Mary..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_hail_mary);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_hail_mary");
-            return "Error: Hail Mary missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_hail_mary,
+                R.string.prayer_hail_mary_latin,
+                "Hail Mary...");
     }
 
     /**
@@ -161,13 +147,13 @@ public class RosaryPrayers {
         int resId;
         switch (position) {
             case 1:
-                resId = R.string.prayer_hail_mary_faith;
+                resId = useLatinPrayers ? R.string.prayer_hail_mary_faith_latin : R.string.prayer_hail_mary_faith;
                 break;
             case 2:
-                resId = R.string.prayer_hail_mary_hope;
+                resId = useLatinPrayers ? R.string.prayer_hail_mary_hope_latin : R.string.prayer_hail_mary_hope;
                 break;
             case 3:
-                resId = R.string.prayer_hail_mary_charity;
+                resId = useLatinPrayers ? R.string.prayer_hail_mary_charity_latin : R.string.prayer_hail_mary_charity;
                 break;
             default:
                 return getHailMary(); // Fallback for invalid position
@@ -182,46 +168,42 @@ public class RosaryPrayers {
     }
 
     public static String getGloryBe() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "Glory be..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_glory_be);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_glory_be");
-            return "Error: Glory Be missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_glory_be,
+                R.string.prayer_glory_be_latin,
+                "Glory be...");
     }
 
     public static String getFatimaPrayer() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "O my Jesus..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_fatima);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_fatima");
-            return "Error: Fatima Prayer missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_fatima,
+                R.string.prayer_fatima_latin,
+                "O my Jesus...");
     }
 
     public static String getHailHolyQueen() {
-        Resources res = getResourcesSafely();
-        if (res == null) return "Hail, Holy Queen..."; // Basic fallback
-        try {
-            return res.getString(R.string.prayer_hail_holy_queen);
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_hail_holy_queen");
-            return "Error: Hail Holy Queen missing.";
-        }
+        return getPrayerString(
+                R.string.prayer_hail_holy_queen,
+                R.string.prayer_hail_holy_queen_latin,
+                "Hail, Holy Queen...");
     }
 
     public static String getRosaryPrayer() {
+        return getPrayerString(
+                R.string.prayer_rosary,
+                R.string.prayer_rosary_latin,
+                "Let us pray...");
+    }
+
+    private static String getPrayerString(int defaultResId, int latinResId, String fallback) {
         Resources res = getResourcesSafely();
-        if (res == null) return "Let us pray..."; // Basic fallback
+        if (res == null) return fallback;
+
         try {
-            return res.getString(R.string.prayer_rosary);
+            return res.getString(useLatinPrayers ? latinResId : defaultResId);
         } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Resource not found: prayer_rosary");
-            return "Error: Rosary Prayer missing.";
+            Log.e(TAG, "Prayer resource not found", e);
+            return fallback;
         }
     }
 

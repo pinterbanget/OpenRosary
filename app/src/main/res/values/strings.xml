@@ -8,10 +8,21 @@
     <string name="choose_theme">Choose Theme:</string>
     <string name="theme">Theme</string>
     <string name="choose_language">Choose Language:</string>
+    <string name="latin_prayers_label">Latin prayers only</string>
     <string name="start_button">Start</string>
+    <string name="welcome_options_title">Prayer Options</string>
+    <string name="welcome_options_subtitle">Set your display and prayer preferences before you begin.</string>
+    <string name="theme_mode_label">Appearance</string>
+    <string name="theme_mode_hint">Choose between light mode and true black dark mode</string>
+    <string name="language_row_label">Language</string>
+    <string name="language_row_hint">Applies to menus, labels, and readings</string>
+    <string name="latin_prayers_hint">Rosary prayers switch to Latin while readings stay vernacular</string>
+    <string name="choose_mysteries_subtitle">Pick a set of mysteries and begin praying right away.</string>
+    <string name="mystery_open_label">Open</string>
     
     <!-- Theme Options -->
     <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
     <string name="theme_amoled">Dark (AMOLED)</string>
     <string name="theme_switch_label">Switch Theme</string>
     <string name="light">Light</string>
@@ -45,7 +56,7 @@
     <string name="app_info_title">Information</string>
     
     <!-- Combined Info Content -->
-    <string name="app_info_content">OpenRosary v0.2.1\n\nCreated and maintained by pinterbanget.\n\nContributors\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023\n\nImage Attribution\n\nMystery icons:\n• Joyful Mysteries: Denis Doukhan from Pixabay\n• Sorrowful and Glorious Mysteries: falco from Pixabay\n• Luminous Mysteries: Gini George from Pixabay</string>
+    <string name="app_info_content">OpenRosary v0.3 \n\nCreated and maintained by pinterbanget.\n\nContributors\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023\n\nImage Attribution\n\nMystery icons:\n• Joyful Mysteries: Denis Doukhan from Pixabay\n• Sorrowful and Glorious Mysteries: falco from Pixabay\n• Luminous Mysteries: Gini George from Pixabay</string>
     
     <!-- Update Checker -->
     <string name="update_available_title">Update Available</string>
@@ -85,6 +96,6 @@
     <!-- Arrays -->
     <string-array name="theme_options">
         <item>@string/theme_light</item>
-        <item>@string/theme_amoled</item>
+        <item>@string/theme_dark</item>
     </string-array>
 </resources>

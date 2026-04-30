@@ -3,5 +3,14 @@
     <!-- Custom attributes for theme styling -->
     <attr name="mysteryButtonStyle" format="reference" />
     <attr name="spinnerBackgroundStyle" format="reference" />
-    <attr name="startButtonColorOnlyStyle" format="reference" /> <!-- Added for Start Button -->
+    <attr name="startButtonColorOnlyStyle" format="reference" />
+    <attr name="prayerBackgroundStyle" format="reference" />
+    <attr name="settingsSectionBackgroundStyle" format="reference" />
+    <attr name="settingsRowBackgroundStyle" format="reference" />
+    <attr name="settingsDropdownBackgroundStyle" format="reference" />
+    <attr name="rectangularButtonStyle" format="reference" />
+    <attr name="mysteryCardBorderStyle" format="reference" />
+    <attr name="mysteryCardHighlightStyle" format="reference" />
+    <attr name="recommendationPillColor" format="color" />
+    <attr name="recommendationPillTextColor" format="color" />
 </resources>

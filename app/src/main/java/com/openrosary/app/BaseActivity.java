@@ -24,7 +24,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
     protected static final String PREFS_NAME = "SimpleRosaryPrefs";
     protected static final String THEME_KEY = "theme";
+    protected static final String THEME_MODE_LIGHT = "light";
+    protected static final String THEME_MODE_DARK = "dark";
+    protected static final String THEME_MODE_AMOLED = "amoled";
     protected static final String LANGUAGE_KEY = "language";
+    protected static final String LATIN_PRAYERS_KEY = "latin_prayers";
     // Removed initialSetupComplete as it's less relevant with attachBaseContext approach
 
     // Helper method to update context configuration based on saved language
@@ -82,10 +86,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         try {
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             if (settings != null) {
-                boolean isDarkMode = settings.getBoolean(THEME_KEY, false);
+                String themeMode = getThemeMode(settings);
 
-                // Apply theme BEFORE super.onCreate()
-                if (isDarkMode) {
+                if (THEME_MODE_AMOLED.equals(themeMode)) {
                     setTheme(R.style.AppTheme_Amoled); 
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
@@ -133,5 +136,73 @@ public abstract class BaseActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e(TAG, "Error saving language preference: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
         }
+    }
+
+    protected boolean areLatinPrayersEnabled() {
+        try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            return settings != null && settings.getBoolean(LATIN_PRAYERS_KEY, false);
+        } catch (Exception e) {
+            Log.e(TAG, "Error reading Latin prayer preference: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            return false;
+        }
+    }
+
+    protected void setLatinPrayersEnabled(boolean enabled) {
+        try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            if (settings != null) {
+                settings.edit().putBoolean(LATIN_PRAYERS_KEY, enabled).apply();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving Latin prayer preference: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+        }
+    }
+
+    protected String getThemeMode() {
+        return getThemeMode(getSharedPreferences(PREFS_NAME, 0));
+    }
+
+    protected boolean isDarkThemeMode() {
+        String themeMode = getThemeMode();
+        return THEME_MODE_DARK.equals(themeMode) || THEME_MODE_AMOLED.equals(themeMode);
+    }
+
+    protected void setThemeMode(String themeMode) {
+        try {
+            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+            if (settings != null) {
+                settings.edit().putString(THEME_KEY, normalizeThemeMode(themeMode)).apply();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error saving theme mode: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+        }
+    }
+
+    private String getThemeMode(SharedPreferences settings) {
+        try {
+            if (settings == null) {
+                return THEME_MODE_LIGHT;
+            }
+
+            String storedTheme = settings.getString(THEME_KEY, null);
+            if (storedTheme != null) {
+                return normalizeThemeMode(storedTheme);
+            }
+
+            return settings.getBoolean(THEME_KEY, false) ? THEME_MODE_AMOLED : THEME_MODE_LIGHT;
+        } catch (ClassCastException e) {
+            return settings != null && settings.getBoolean(THEME_KEY, false) ? THEME_MODE_AMOLED : THEME_MODE_LIGHT;
+        }
+    }
+
+    private String normalizeThemeMode(String themeMode) {
+        if (THEME_MODE_AMOLED.equals(themeMode)) {
+            return THEME_MODE_AMOLED;
+        }
+        if (THEME_MODE_DARK.equals(themeMode)) {
+            return THEME_MODE_AMOLED;
+        }
+        return THEME_MODE_LIGHT;
     }
 }

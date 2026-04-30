@@ -20,7 +20,7 @@ public class InfoActivity extends BaseActivity {
             // Get the isDarkMode value from preferences to use for UI elements
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             if (settings != null) {
-                isDarkMode = settings.getBoolean(THEME_KEY, false);
+                isDarkMode = isDarkThemeMode();
             }
             
             // Update text colors based on theme

@@ -8,10 +8,21 @@
     <string name="choose_theme">Pilih Tema:</string>
     <string name="theme">Tema</string>
     <string name="choose_language">Pilih Bahasa:</string>
+    <string name="latin_prayers_label">Doa-doa dalam bahasa Latin</string>
     <string name="start_button">Mulai</string>
+    <string name="welcome_options_title">Opsi Doa</string>
+    <string name="welcome_options_subtitle">Atur tampilan dan preferensi doa sebelum memulai.</string>
+    <string name="theme_mode_label">Tampilan</string>
+    <string name="theme_mode_hint">Pilih antara mode terang dan mode gelap hitam pekat</string>
+    <string name="language_row_label">Bahasa</string>
+    <string name="language_row_hint">Berlaku untuk menu, label, dan bacaan</string>
+    <string name="latin_prayers_hint">Doa Rosario berubah ke Latin, tetapi bacaannya tetap dalam bahasa pilihan</string>
+    <string name="choose_mysteries_subtitle">Pilih satu rangkaian peristiwa dan langsung mulai berdoa.</string>
+    <string name="mystery_open_label">Buka</string>
     
     <!-- Theme Options -->
     <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
     <string name="theme_amoled">Gelap (AMOLED)</string>
     <string name="theme_switch_label">Ganti Tema</string>
     <string name="light">Terang</string>
@@ -81,6 +92,6 @@
     <!-- Arrays -->
     <string-array name="theme_options">
         <item>@string/theme_light</item>
-        <item>@string/theme_amoled</item>
+        <item>@string/theme_dark</item>
     </string-array>
 </resources>

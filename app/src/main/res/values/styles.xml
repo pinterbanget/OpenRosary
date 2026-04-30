@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme -->
+    <!-- Base application theme (Light) -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/backgroundColorLight</item>
         <item name="android:colorBackground">@color/backgroundColorLight</item>
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+
+        <!-- Custom attributes -->
         <item name="mysteryButtonStyle">@style/MysteryButtonLight</item>
         <item name="spinnerBackgroundStyle">@drawable/spinner_background</item>
-        <item name="startButtonColorOnlyStyle">@style/StartButtonLight</item> <!-- Added -->
+        <item name="startButtonColorOnlyStyle">@style/StartButtonLight</item>
+        <item name="prayerBackgroundStyle">@drawable/prayer_text_background</item>
+        <item name="settingsSectionBackgroundStyle">@drawable/settings_section_background</item>
+        <item name="settingsRowBackgroundStyle">@drawable/setting_row_background</item>
+        <item name="settingsDropdownBackgroundStyle">@drawable/settings_dropdown_background</item>
+        <item name="rectangularButtonStyle">@drawable/rectangular_button_style</item>
+        <item name="mysteryCardBorderStyle">@drawable/mystery_card_border</item>
+        <item name="mysteryCardHighlightStyle">@drawable/mystery_card_highlight</item>
+        <item name="recommendationPillColor">@color/colorPrimary</item>
+        <item name="recommendationPillTextColor">@android:color/white</item>
     </style>
 
-    <!-- Splash screen theme to prevent flickering -->
+    <!-- Splash screen theme -->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowBackground">@color/backgroundColorLight</item>
     </style>
 
-    <!-- AMOLED Dark theme -->
+    <!-- Dark theme (Material Dark) -->
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/backgroundColorAmoled</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/backgroundColorAmoled</item>
+        <item name="android:colorBackground">@color/backgroundColorAmoled</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+
+        <!-- Custom attributes -->
+        <item name="mysteryButtonStyle">@style/MysteryButtonDark</item>
+        <item name="spinnerBackgroundStyle">@drawable/spinner_background_dark</item>
+        <item name="startButtonColorOnlyStyle">@style/StartButtonDark</item>
+        <item name="prayerBackgroundStyle">@drawable/prayer_text_background</item>
+        <item name="settingsSectionBackgroundStyle">@drawable/settings_section_background</item>
+        <item name="settingsRowBackgroundStyle">@drawable/setting_row_background</item>
+        <item name="settingsDropdownBackgroundStyle">@drawable/settings_dropdown_background</item>
+        <item name="rectangularButtonStyle">@drawable/rectangular_button_style</item>
+        <item name="mysteryCardBorderStyle">@drawable/mystery_card_border</item>
+        <item name="mysteryCardHighlightStyle">@drawable/mystery_card_highlight</item>
+        <item name="recommendationPillColor">@color/colorAccent</item>
+        <item name="recommendationPillTextColor">@android:color/black</item>
+    </style>
+
+    <!-- AMOLED Dark theme (True Black #000000) -->
     <style name="AppTheme.Amoled" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/backgroundColorAmoled</item>
@@ -28,33 +64,51 @@
         <item name="android:windowBackground">@color/backgroundColorAmoled</item>
         <item name="android:colorBackground">@color/backgroundColorAmoled</item>
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="mysteryButtonStyle">@style/MysteryButtonDark</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+
+        <!-- Custom attributes using AMOLED-specific drawables -->
+        <item name="mysteryButtonStyle">@style/MysteryButtonAmoled</item>
         <item name="spinnerBackgroundStyle">@drawable/spinner_background_dark</item>
-        <item name="startButtonColorOnlyStyle">@style/StartButtonDark</item> <!-- Added -->
+        <item name="startButtonColorOnlyStyle">@style/StartButtonDark</item>
+        <item name="prayerBackgroundStyle">@drawable/prayer_text_background_amoled</item>
+        <item name="settingsSectionBackgroundStyle">@drawable/settings_section_background_amoled</item>
+        <item name="settingsRowBackgroundStyle">@drawable/setting_row_background_amoled</item>
+        <item name="settingsDropdownBackgroundStyle">@drawable/settings_dropdown_background_amoled</item>
+        <item name="rectangularButtonStyle">@drawable/rectangular_button_style_amoled</item>
+        <item name="mysteryCardBorderStyle">@drawable/mystery_card_border_amoled</item>
+        <item name="mysteryCardHighlightStyle">@drawable/mystery_card_highlight_amoled</item>
+        <item name="recommendationPillColor">@color/colorAccent</item>
+        <item name="recommendationPillTextColor">@android:color/black</item>
     </style>
     
-    <!-- Light theme mystery button style -->
+    <!-- Mystery button styles -->
     <style name="MysteryButtonLight">
         <item name="android:background">@drawable/mystery_button_background</item>
-        <item name="android:textColor">@color/colorPrimary</item> <!-- Changed for visibility on white bg -->
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:padding">12dp</item>
     </style>
     
-    <!-- Dark theme mystery button style -->
     <style name="MysteryButtonDark">
         <item name="android:background">@drawable/mystery_button_background_dark</item>
-        <item name="android:textColor">@color/colorAccent</item> <!-- Changed for visibility on black bg -->
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:padding">12dp</item>
     </style>
 
-    <!-- Style for Start Button (Light Theme) -->
+    <style name="MysteryButtonAmoled">
+        <item name="android:background">@drawable/mystery_button_background_amoled</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- Start Button styles -->
     <style name="StartButtonLight">
         <item name="android:background">@drawable/start_button_background</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:padding">12dp</item>
-    </style>    <!-- Style for Start Button (Dark Theme) -->
+    </style>
+
     <style name="StartButtonDark">
-        <item name="android:background">@drawable/start_button_background</item> <!-- Changed to use the base name -->
+        <item name="android:background">@drawable/start_button_background</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:padding">12dp</item>
     </style>
