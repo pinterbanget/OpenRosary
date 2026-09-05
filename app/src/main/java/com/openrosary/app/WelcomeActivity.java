@@ -3,32 +3,50 @@ package com.openrosary.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.core.view.GestureDetectorCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import java.util.Calendar;
 import java.util.Locale;
 
-public class WelcomeActivity extends BaseActivity implements GestureDetector.OnGestureListener, AdapterView.OnItemSelectedListener {
+/**
+ * Main 3-page swipeable hub of OpenRosary:
+ * Page 0: Options (Theme, Language, Latin Prayers, 52dp Start Button)
+ * Page 1: Prayer / Mystery Selection (Default)
+ * Page 2: About / Information
+ *
+ * The top header (brand title + description) is FIXED and only the description text
+ * updates in place as pages change ("options" -> "a simple native rosary tool." -> "about").
+ */
+public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "WelcomeActivity";
-    private static final int SWIPE_THRESHOLD = 100;
-    private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+    public static final String EXTRA_INITIAL_PAGE = "extra_initial_page";
 
-    private Spinner themeSpinner;
+    private static int sPendingPage = 1;
+
+    private TextView brandTitleTextView;
+    private TextView brandSubtitleTextView;
+    private ViewPager viewPager;
+    private TextView pillThemeLight, pillThemeDark, pillThemeOled;
     private Spinner languageSpinner;
-    private Button startButton;
     private SwitchCompat latinPrayersToggle;
-    private GestureDetectorCompat gestureDetector;
-    private boolean suppressThemeSelection = false;
     private boolean suppressLanguageSelection = false;
+    private boolean isDevotionsExpanded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,294 +54,414 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
         setContentView(R.layout.activity_welcome);
 
         try {
-            initializeViews();
-            setupGestureDetector();
-            setupThemeSpinner();
-            setupLanguageSpinner();
-            setupLatinPrayersToggle();
-            setupStartButton();
+            int targetPage = getIntent().getIntExtra(EXTRA_INITIAL_PAGE, sPendingPage);
+            sPendingPage = 1; // Reset to default
+
+            brandTitleTextView = findViewById(R.id.brandTitleTextView);
+            brandSubtitleTextView = findViewById(R.id.brandSubtitleTextView);
+
+            setupViewPager(targetPage);
             checkForUpdates();
         } catch (Exception e) {
-            Log.e(TAG, "Error in onCreate: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            Log.e(TAG, "Error in onCreate: " + (e.getMessage() != null ? e.getMessage() : "unknown"), e);
         }
     }
 
-    private void initializeViews() {
-        try {
-            themeSpinner = findViewById(R.id.themeSpinner);
-            languageSpinner = findViewById(R.id.languageSpinner);
-            latinPrayersToggle = findViewById(R.id.latinPrayersToggle);
-            startButton = findViewById(R.id.startButton);
-        } catch (Exception e) {
-            Log.e(TAG, "Error initializing views: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-        }
+    private void setupViewPager(int initialPage) {
+        viewPager = findViewById(R.id.mainViewPager);
+        if (viewPager == null) return;
+
+        viewPager.setAdapter(new HubPagerAdapter());
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                updateSubtitleForPage(position);
+            }
+        });
+
+        viewPager.setCurrentItem(initialPage, false);
+        updateSubtitleForPage(initialPage);
     }
 
-    private void setupGestureDetector() {
-        try {
-            gestureDetector = new GestureDetectorCompat(this, this);
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up gesture detector: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+    private void updateSubtitleForPage(int position) {
+        if (brandSubtitleTextView == null) return;
+        int resId;
+        if (position == 0) {
+            resId = R.string.options;
+        } else if (position == 2) {
+            resId = R.string.about;
+        } else {
+            resId = R.string.brand_tagline;
         }
+        brandSubtitleTextView.animate().alpha(0f).setDuration(80).withEndAction(() -> {
+            brandSubtitleTextView.setText(resId);
+            brandSubtitleTextView.animate().alpha(1f).setDuration(110).start();
+        }).start();
     }
 
-    private void setupThemeSpinner() {
-        try {
-            if (themeSpinner == null) {
-                return;
+    private class HubPagerAdapter extends PagerAdapter {
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return view == object;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            LayoutInflater inflater = LayoutInflater.from(WelcomeActivity.this);
+            View pageView;
+
+            if (position == 0) {
+                // Page 0: Options
+                pageView = inflater.inflate(R.layout.page_options, container, false);
+                setupOptionsPage(pageView);
+            } else if (position == 1) {
+                // Page 1: Mystery Selection (Center / Default)
+                pageView = inflater.inflate(R.layout.page_mysteries, container, false);
+                setupMysteriesPage(pageView);
+            } else {
+                // Page 2: About
+                pageView = inflater.inflate(R.layout.page_about, container, false);
+                setupAboutPage(pageView);
             }
 
-            ArrayAdapter<CharSequence> themeAdapter = ArrayAdapter.createFromResource(
-                    this,
-                    R.array.theme_options,
-                    android.R.layout.simple_spinner_item
-            );
-            themeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            themeSpinner.setAdapter(themeAdapter);
+            container.addView(pageView);
+            return pageView;
+        }
 
-            suppressThemeSelection = true;
-            themeSpinner.setSelection(getThemeSelectionIndex(getThemeMode()), false);
-            themeSpinner.post(() -> {
-                suppressThemeSelection = false;
-                themeSpinner.setOnItemSelectedListener(WelcomeActivity.this);
-            });
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up theme spinner: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView((View) object);
         }
     }
 
-    private void setupLanguageSpinner() {
-        try {
-            if (languageSpinner == null) {
-                Log.e(TAG, "Language spinner is null");
-                return;
-            }
+    // =========================================================================
+    // Page 0: Options Setup
+    // =========================================================================
+    private void setupOptionsPage(View root) {
+        pillThemeLight = root.findViewById(R.id.pillThemeLight);
+        pillThemeDark = root.findViewById(R.id.pillThemeDark);
+        pillThemeOled = root.findViewById(R.id.pillThemeOled);
+        languageSpinner = root.findViewById(R.id.languageSpinner);
+        latinPrayersToggle = root.findViewById(R.id.latinPrayersToggle);
 
-            String[] languages = new String[] {
-                    getString(R.string.language_english),
-                    getString(R.string.language_indonesian)
-            };
-
-            ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_spinner_item,
-                    languages
-            );
-            languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            languageSpinner.setAdapter(languageAdapter);
-
-            Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
-            String currentLangCode = currentLocale.getLanguage();
-
-            suppressLanguageSelection = true;
-            languageSpinner.setSelection(currentLangCode.equals("in") ? 1 : 0, false);
-            languageSpinner.post(() -> {
-                suppressLanguageSelection = false;
-                languageSpinner.setOnItemSelectedListener(WelcomeActivity.this);
-            });
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up language spinner: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+        Button startButton = root.findViewById(R.id.startButton);
+        if (startButton != null) {
+            AnimationHelper.attachPressScale(startButton);
+            startButton.setOnClickListener(v -> viewPager.setCurrentItem(1, true));
         }
+
+        setupThemePills();
+        setupLanguageSpinner();
+        setupLatinPrayersToggle();
     }
 
-    private void setupLatinPrayersToggle() {
-        try {
-            if (latinPrayersToggle == null) {
-                Log.e(TAG, "Latin prayers toggle is null");
-                return;
-            }
+    private void setupThemePills() {
+        if (pillThemeLight == null || pillThemeDark == null || pillThemeOled == null) return;
 
-            latinPrayersToggle.setOnCheckedChangeListener(null);
-            latinPrayersToggle.setChecked(areLatinPrayersEnabled());
-            latinPrayersToggle.setOnCheckedChangeListener((buttonView, isChecked) ->
-                    setLatinPrayersEnabled(isChecked));
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up Latin prayers toggle: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-        }
+        updateThemePillsHighlight(getThemeMode());
+
+        pillThemeLight.setOnClickListener(v -> applySelectedTheme(THEME_MODE_LIGHT));
+        pillThemeDark.setOnClickListener(v -> applySelectedTheme(THEME_MODE_DARK));
+        pillThemeOled.setOnClickListener(v -> applySelectedTheme(THEME_MODE_AMOLED));
     }
 
-    private void setupStartButton() {
-        try {
-            if (startButton == null) {
-                return;
-            }
+    private void updateThemePillsHighlight(String currentTheme) {
+        setPillState(pillThemeLight, THEME_MODE_LIGHT.equals(currentTheme));
+        setPillState(pillThemeDark, THEME_MODE_DARK.equals(currentTheme));
+        setPillState(pillThemeOled, THEME_MODE_AMOLED.equals(currentTheme));
+    }
 
-            startButton.setOnClickListener(v -> {
-                try {
-                    startButton.setEnabled(false);
+    private void setPillState(TextView pill, boolean isSelected) {
+        if (pill == null) return;
+        if (isSelected) {
+            TypedValue typedValue = new TypedValue();
+            getTheme().resolveAttribute(R.attr.segmentedPillActiveStyle, typedValue, true);
+            pill.setBackgroundResource(typedValue.resourceId);
 
-                    Intent intent = new Intent(WelcomeActivity.this, ChoicesActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            TypedValue colorVal = new TypedValue();
+            getTheme().resolveAttribute(R.attr.segmentedPillActiveTextColor, colorVal, true);
+            pill.setTextColor(colorVal.data);
+            pill.setElevation(dp(1.5f));
+            AnimationHelper.animatePillSelection(pill);
+        } else {
+            pill.setBackgroundResource(R.drawable.segmented_pill_inactive);
 
-                    v.postDelayed(() -> {
-                        if (startButton != null) {
-                            startButton.setEnabled(true);
-                        }
-                    }, 300);
-                } catch (Exception e) {
-                    Log.e(TAG, "Error navigating to ChoicesActivity: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-                    startActivity(new Intent(WelcomeActivity.this, ChoicesActivity.class));
-                    if (startButton != null) {
-                        startButton.setEnabled(true);
-                    }
-                }
-            });
-            startButton.setText(R.string.start_button);
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up start button: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            TypedValue colorVal = new TypedValue();
+            getTheme().resolveAttribute(R.attr.segmentedPillInactiveTextColor, colorVal, true);
+            pill.setTextColor(colorVal.data);
+            pill.setElevation(0);
         }
     }
 
     private void applySelectedTheme(String themeMode) {
         try {
-            String normalizedThemeMode = normalizeThemeMode(themeMode);
-            setThemeMode(normalizedThemeMode);
+            if (themeMode.equals(getThemeMode())) return;
 
-            if (THEME_MODE_LIGHT.equals(normalizedThemeMode)) {
+            sPendingPage = 0; // Stay on Options page
+            setThemeMode(themeMode);
+            if (THEME_MODE_LIGHT.equals(themeMode)) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
 
             recreate();
+            overridePendingTransition(0, 0);
         } catch (Exception e) {
-            Log.e(TAG, "Error applying selected theme: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            Log.e(TAG, "Error applying theme: " + e.getMessage());
         }
     }
 
-    private String normalizeThemeMode(String themeMode) {
-        if (THEME_MODE_AMOLED.equals(themeMode)) {
-            return THEME_MODE_AMOLED;
-        }
-        if (THEME_MODE_DARK.equals(themeMode)) {
-            return THEME_MODE_AMOLED;
-        }
-        return THEME_MODE_LIGHT;
+    private void setupLanguageSpinner() {
+        if (languageSpinner == null) return;
+
+        String[] languages = new String[] {
+                getString(R.string.language_english),
+                getString(R.string.language_indonesian)
+        };
+
+        ArrayAdapter<String> languageAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                languages
+        );
+        languageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        languageSpinner.setAdapter(languageAdapter);
+
+        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+        String currentLangCode = currentLocale.getLanguage();
+
+        suppressLanguageSelection = true;
+        languageSpinner.setSelection(currentLangCode.equals("in") ? 1 : 0, false);
+        languageSpinner.post(() -> {
+            suppressLanguageSelection = false;
+            languageSpinner.setOnItemSelectedListener(WelcomeActivity.this);
+        });
     }
 
-    private int getThemeSelectionIndex(String themeMode) {
-        if (THEME_MODE_AMOLED.equals(themeMode)) {
-            return 1;
-        }
-        return 0;
-    }
-
-    private String getThemeModeForSelection(int position) {
-        if (position == 1) {
-            return THEME_MODE_AMOLED;
-        }
-        return THEME_MODE_LIGHT;
-    }
-
-    private void cycleThemeSelection(boolean forward) {
-        if (themeSpinner == null) {
-            return;
-        }
-
-        int currentPosition = themeSpinner.getSelectedItemPosition();
-        int itemCount = themeSpinner.getCount();
-        int nextPosition = forward
-                ? (currentPosition + 1) % itemCount
-                : (currentPosition - 1 + itemCount) % itemCount;
-        themeSpinner.setSelection(nextPosition);
+    private void setupLatinPrayersToggle() {
+        if (latinPrayersToggle == null) return;
+        latinPrayersToggle.setOnCheckedChangeListener(null);
+        latinPrayersToggle.setChecked(areLatinPrayersEnabled());
+        latinPrayersToggle.setOnCheckedChangeListener((bv, isChecked) -> setLatinPrayersEnabled(isChecked));
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
-        try {
-            if (parent.getId() == R.id.themeSpinner) {
-                if (suppressThemeSelection) {
-                    return;
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if (suppressLanguageSelection) return;
+        String selectedLangCode = position == 0 ? "en" : "in";
+        Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
+        String currentLangCode = currentLocale.getLanguage();
+        if (!selectedLangCode.equals(currentLangCode)) {
+            sPendingPage = 0; // Stay on options page after language change
+            setAppLocale(selectedLangCode);
+            recreate();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {}
+
+    // =========================================================================
+    // Page 1: Mystery Selection Setup
+    // =========================================================================
+    private void setupMysteriesPage(View root) {
+        View joyfulCard = root.findViewById(R.id.joyfulMysteriesCard);
+        View sorrowfulCard = root.findViewById(R.id.sorrowfulMysteriesCard);
+        View gloriousCard = root.findViewById(R.id.gloriousMysteriesCard);
+        View luminousCard = root.findViewById(R.id.luminousMysteriesCard);
+
+        AnimationHelper.attachPressScale(joyfulCard);
+        AnimationHelper.attachPressScale(sorrowfulCard);
+        AnimationHelper.attachPressScale(gloriousCard);
+        AnimationHelper.attachPressScale(luminousCard);
+
+        if (joyfulCard != null) joyfulCard.setOnClickListener(v -> startRosary("joyful"));
+        if (sorrowfulCard != null) sorrowfulCard.setOnClickListener(v -> startRosary("sorrowful"));
+        if (gloriousCard != null) gloriousCard.setOnClickListener(v -> startRosary("glorious"));
+        if (luminousCard != null) luminousCard.setOnClickListener(v -> startRosary("luminous"));
+
+        setupRecommendationPill(root);
+        setupOtherDevotionsDropdown(root);
+
+        // Bottom buttons: Options and Info (52dp)
+        Button fixedOptionsButton = root.findViewById(R.id.fixedOptionsButton);
+        Button fixedInfoButton = root.findViewById(R.id.fixedInfoButton);
+
+        if (fixedOptionsButton != null) {
+            AnimationHelper.attachPressScale(fixedOptionsButton);
+            fixedOptionsButton.setOnClickListener(v -> viewPager.setCurrentItem(0, true));
+        }
+
+        if (fixedInfoButton != null) {
+            AnimationHelper.attachPressScale(fixedInfoButton);
+            fixedInfoButton.setOnClickListener(v -> viewPager.setCurrentItem(2, true));
+        }
+
+        equalizeCardHeights(root);
+    }
+
+    private void setupRecommendationPill(View root) {
+        int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        int targetPillId = -1;
+
+        switch (dayOfWeek) {
+            case Calendar.MONDAY:
+            case Calendar.SATURDAY:
+                targetPillId = R.id.joyfulRecommendationPill;
+                break;
+            case Calendar.TUESDAY:
+            case Calendar.FRIDAY:
+                targetPillId = R.id.sorrowfulRecommendationPill;
+                break;
+            case Calendar.WEDNESDAY:
+            case Calendar.SUNDAY:
+                targetPillId = R.id.gloriousRecommendationPill;
+                break;
+            case Calendar.THURSDAY:
+                targetPillId = R.id.luminousRecommendationPill;
+                break;
+        }
+
+        if (targetPillId != -1) {
+            View pill = root.findViewById(targetPillId);
+            if (pill != null) {
+                pill.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private void setupOtherDevotionsDropdown(View root) {
+        View otherDevotionsButton = root.findViewById(R.id.otherDevotionsButton);
+        View otherDevotionsContainer = root.findViewById(R.id.otherDevotionsExpandableContainer);
+        TextView otherDevotionsChevron = root.findViewById(R.id.otherDevotionsChevronText);
+        ScrollView mainScrollView = root.findViewById(R.id.mainScrollView);
+        View otherDevotionsCard = root.findViewById(R.id.otherDevotionsCard);
+
+        if (otherDevotionsButton != null && otherDevotionsContainer != null) {
+            AnimationHelper.attachPressScale(otherDevotionsButton);
+            otherDevotionsButton.setOnClickListener(v -> {
+                isDevotionsExpanded = !isDevotionsExpanded;
+                if (isDevotionsExpanded) {
+                    otherDevotionsContainer.setVisibility(View.VISIBLE);
+                    otherDevotionsContainer.setAlpha(0f);
+                    otherDevotionsContainer.animate().alpha(1f).setDuration(220).start();
+                    if (otherDevotionsChevron != null) {
+                        otherDevotionsChevron.animate().rotation(90f).setDuration(200).start();
+                    }
+                    if (mainScrollView != null && otherDevotionsCard != null) {
+                        mainScrollView.postDelayed(() -> {
+                            View parentFrame = (View) otherDevotionsCard.getParent();
+                            int targetY = parentFrame != null ? parentFrame.getTop() : otherDevotionsCard.getTop();
+                            mainScrollView.smoothScrollTo(0, targetY);
+                        }, 120);
+                    }
+                } else {
+                    if (otherDevotionsChevron != null) {
+                        otherDevotionsChevron.animate().rotation(0f).setDuration(200).start();
+                    }
+                    otherDevotionsContainer.animate().alpha(0f).setDuration(160).withEndAction(() -> {
+                        otherDevotionsContainer.setVisibility(View.GONE);
+                    }).start();
                 }
+            });
+        }
 
-                String selectedThemeMode = getThemeModeForSelection(position);
-                if (!selectedThemeMode.equals(getThemeMode())) {
-                    applySelectedTheme(selectedThemeMode);
-                }
-                return;
-            }
+        bindDevotionItem(root, R.id.devotion77Item, "our-father-77");
+        bindDevotionItem(root, R.id.devotionMercyItem, "divine-mercy");
+        bindDevotionItem(root, R.id.devotionSorrowsItem, "seven-sorrows");
+        bindDevotionItem(root, R.id.devotionFranciscanItem, "franciscan-crown");
+    }
 
-            if (parent.getId() == R.id.languageSpinner) {
-                if (suppressLanguageSelection) {
-                    return;
-                }
-
-                String selectedLangCode = position == 0 ? "en" : "in";
-                Locale currentLocale = getResources().getConfiguration().getLocales().get(0);
-                String currentLangCode = currentLocale.getLanguage();
-
-                if (!selectedLangCode.equals(currentLangCode)) {
-                    setAppLocale(selectedLangCode);
-                    recreate();
-                }
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Error handling selection: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+    private void bindDevotionItem(View root, int viewId, String devotionId) {
+        View item = root.findViewById(viewId);
+        if (item != null) {
+            AnimationHelper.attachPressScale(item);
+            item.setOnClickListener(v -> {
+                Intent intent = new Intent(WelcomeActivity.this, DevotionActivity.class);
+                intent.putExtra("devotionType", devotionId);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            });
         }
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
+    private void equalizeCardHeights(View root) {
+        View[] cards = new View[] {
+                root.findViewById(R.id.joyfulMysteriesCard),
+                root.findViewById(R.id.sorrowfulMysteriesCard),
+                root.findViewById(R.id.gloriousMysteriesCard),
+                root.findViewById(R.id.luminousMysteriesCard),
+                root.findViewById(R.id.otherDevotionsButton)
+        };
 
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        try {
-            if (e1 == null || e2 == null) {
-                return false;
+        final int baseHeight = dp(90);
+        for (View card : cards) {
+            if (card == null) continue;
+            ViewGroup.LayoutParams lp = card.getLayoutParams();
+            if (lp != null) {
+                lp.height = baseHeight;
+                card.setLayoutParams(lp);
             }
-
-            float diffX = e2.getX() - e1.getX();
-            float diffY = e2.getY() - e1.getY();
-
-            if (Math.abs(diffX) > Math.abs(diffY)
-                    && Math.abs(diffX) > SWIPE_THRESHOLD
-                    && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
-                cycleThemeSelection(diffX < 0);
-                return true;
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "Error in onFling: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            card.setMinimumHeight(baseHeight);
         }
-        return false;
+
+        View first = cards[0];
+        if (first != null) {
+            first.post(() -> {
+                int maxHeight = baseHeight;
+                for (View card : cards) {
+                    if (card == null) continue;
+                    int widthSpec = View.MeasureSpec.makeMeasureSpec(
+                            card.getWidth() > 0 ? card.getWidth() : getResources().getDisplayMetrics().widthPixels,
+                            View.MeasureSpec.AT_MOST);
+                    int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                    card.measure(widthSpec, heightSpec);
+                    int measured = card.getMeasuredHeight();
+                    if (measured > maxHeight) {
+                        maxHeight = measured;
+                    }
+                }
+                for (View card : cards) {
+                    if (card == null) continue;
+                    ViewGroup.LayoutParams lp = card.getLayoutParams();
+                    if (lp != null && lp.height != maxHeight) {
+                        lp.height = maxHeight;
+                        card.setLayoutParams(lp);
+                    }
+                }
+            });
+        }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        try {
-            if (gestureDetector != null && gestureDetector.onTouchEvent(event)) {
-                return true;
-            }
-            return super.onTouchEvent(event);
-        } catch (Exception e) {
-            Log.e(TAG, "Error in onTouchEvent: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-            return super.onTouchEvent(event);
+    private void startRosary(String mysteryType) {
+        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+        intent.putExtra("mysteryType", mysteryType);
+        intent.putExtra("mystery_type", mysteryType);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    // =========================================================================
+    // Page 2: About Setup
+    // =========================================================================
+    private void setupAboutPage(View root) {
+        Button aboutBackButton = root.findViewById(R.id.aboutBackButton);
+        if (aboutBackButton != null) {
+            AnimationHelper.attachPressScale(aboutBackButton);
+            aboutBackButton.setOnClickListener(v -> viewPager.setCurrentItem(1, true));
         }
+    }
+
+    private int dp(float val) {
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, val, getResources().getDisplayMetrics()));
     }
 
     private void checkForUpdates() {
@@ -331,7 +469,17 @@ public class WelcomeActivity extends BaseActivity implements GestureDetector.OnG
             UpdateChecker updateChecker = new UpdateChecker(this);
             updateChecker.checkForUpdates();
         } catch (Exception e) {
-            Log.e(TAG, "Error checking for updates: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
+            Log.e(TAG, "Error checking updates: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (viewPager != null && viewPager.getCurrentItem() != 1) {
+            // Return to central mysteries page
+            viewPager.setCurrentItem(1, true);
+        } else {
+            super.onBackPressed();
         }
     }
 }

@@ -35,6 +35,8 @@
         <activity 
             android:name=".InfoActivity"
             android:exported="false" />
+        <activity android:name=".DevotionsActivity" android:exported="false" />
+        <activity android:name=".DevotionActivity" android:exported="false" />
             
     </application>
 

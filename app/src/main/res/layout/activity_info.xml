@@ -12,25 +12,27 @@
         android:id="@+id/infoTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_info_title"
-        android:textSize="28sp"
+        android:text="@string/about"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_marginTop="48dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0" />
 
     <!-- Info Content in Scrollable Container (matching prayer text style) -->
     <ScrollView
         android:id="@+id/infoTextScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="16dp"
         android:clipToPadding="false"
-        android:padding="16dp"
+        android:padding="20dp"
         android:scrollbars="vertical"
         android:fadeScrollbars="true"
         android:scrollbarFadeDuration="500"
@@ -50,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_info_content"
             android:textSize="16sp"
-            android:lineSpacingMultiplier="1.3"
+            android:lineSpacingMultiplier="1.45"
             android:textColor="?android:attr/textColorPrimary"
             android:gravity="start" />
     </ScrollView>

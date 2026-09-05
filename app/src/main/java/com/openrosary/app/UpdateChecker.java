@@ -19,205 +19,187 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UpdateChecker {
-      private static final String TAG = "UpdateChecker";
+    private static final String TAG = "UpdateChecker";
     private static final String GITHUB_API_URL = "https://api.github.com/repos/pinterbanget/openrosary/releases/latest";
-    
+    private static final Pattern VERSION_PATTERN = Pattern.compile("(\\d+)\\.(\\d+)(?:\\.(\\d+))?");
+
     private Context context;
     private Handler mainHandler;
     private ExecutorService executorService;
     private String currentVersion;
-    
+
     public UpdateChecker(Context context) {
         this.context = context;
         this.mainHandler = new Handler(Looper.getMainLooper());
         this.executorService = Executors.newSingleThreadExecutor();
         this.currentVersion = getCurrentAppVersion();
         Log.d(TAG, "Current app version: " + currentVersion);
-    }    public void checkForUpdates() {
+    }
+
+    public void checkForUpdates() {
         Log.d(TAG, "Starting update check...");
-        executorService.execute(() -> performUpdateCheck());
+        executorService.execute(this::performUpdateCheck);
     }
-    
-    // Test method - force a specific version for testing
+
     public void testUpdateChecker(String testVersion) {
-        Log.d(TAG, "Testing update checker with version: " + testVersion);
         this.currentVersion = testVersion;
-        executorService.execute(() -> performUpdateCheck());
+        executorService.execute(this::performUpdateCheck);
     }
-    
+
     private String getCurrentAppVersion() {
         try {
             return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Error getting app version: " + e.getMessage());
-            return "0.0.0"; // fallback version
+            return "0.4";
         }
     }
-      private void performUpdateCheck() {
-        Log.d(TAG, "Performing update check against: " + GITHUB_API_URL);
+
+    private void performUpdateCheck() {
         try {
             URI uri = new URI(GITHUB_API_URL);
             HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
             connection.setRequestMethod("GET");
-            connection.setConnectTimeout(10000); // Increased to 10 seconds
+            connection.setConnectTimeout(10000);
             connection.setReadTimeout(10000);
             connection.setRequestProperty("Accept", "application/vnd.github.v3+json");
             connection.setRequestProperty("User-Agent", "OpenRosary-App");
-            
+
             int responseCode = connection.getResponseCode();
             Log.d(TAG, "GitHub API response code: " + responseCode);
-            
+
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder responseBuilder = new StringBuilder();
                 String line;
-                
                 while ((line = reader.readLine()) != null) {
                     responseBuilder.append(line);
                 }
                 reader.close();
                 connection.disconnect();
-                
-                Log.d(TAG, "Received response, processing...");
+
                 processUpdateResponse(responseBuilder.toString());
             } else {
-                Log.e(TAG, "HTTP error code: " + responseCode);
-                if (responseCode == 404) {
-                    Log.e(TAG, "Repository or releases not found. Check if the repo exists and has releases.");
-                }
+                Log.e(TAG, "GitHub API returned status: " + responseCode);
             }
-            
         } catch (Exception e) {
             Log.e(TAG, "Error checking for updates: " + e.getMessage());
-            e.printStackTrace();
         }
     }
-    
+
     private void processUpdateResponse(String response) {
         try {
-            JSONObject jsonResponse = new JSONObject(response);
-            String latestVersion = jsonResponse.getString("tag_name");
-            String downloadUrl = null;
-            
-            // Get the download URL for the APK
-            if (jsonResponse.has("assets")) {
-                JSONArray assets = jsonResponse.getJSONArray("assets");
+            JSONObject json = new JSONObject(response);
+            String tagName = json.optString("tag_name", "");
+            String releaseName = json.optString("name", "");
+            String htmlUrl = json.optString("html_url", "https://github.com/pinterbanget/openrosary/releases/latest");
+            String downloadUrl = htmlUrl;
+
+            if (json.has("assets")) {
+                JSONArray assets = json.getJSONArray("assets");
                 for (int i = 0; i < assets.length(); i++) {
                     JSONObject asset = assets.getJSONObject(i);
-                    String assetName = asset.getString("name");
+                    String assetName = asset.optString("name", "");
                     if (assetName.endsWith(".apk")) {
-                        downloadUrl = asset.getString("browser_download_url");
+                        downloadUrl = asset.optString("browser_download_url", htmlUrl);
                         break;
                     }
                 }
             }
-              // Compare versions
-            Log.d(TAG, "Comparing versions - Current: " + currentVersion + ", Latest: " + latestVersion);
-            if (isNewVersionAvailable(currentVersion, latestVersion)) {
-                Log.d(TAG, "New version available, showing dialog");
-                final String finalDownloadUrl = downloadUrl;
-                mainHandler.post(() -> showUpdateDialog(latestVersion, finalDownloadUrl));
-            } else {
-                Log.d(TAG, "App is up to date");
+
+            String latestVersion = extractVersion(tagName);
+            if (latestVersion == null) {
+                latestVersion = extractVersion(releaseName);
             }
-            
+            if (latestVersion == null && downloadUrl != null) {
+                latestVersion = extractVersion(downloadUrl);
+            }
+
+            Log.d(TAG, "Comparing versions - Current: " + currentVersion + ", Latest found: " + latestVersion);
+            if (latestVersion != null && isNewVersionAvailable(currentVersion, latestVersion)) {
+                final String finalVersion = latestVersion;
+                final String finalUrl = downloadUrl;
+                mainHandler.post(() -> showUpdateDialog(finalVersion, finalUrl));
+            } else {
+                Log.d(TAG, "OpenRosary is up to date.");
+            }
         } catch (Exception e) {
             Log.e(TAG, "Error parsing update response: " + e.getMessage());
         }
-    }    private boolean isNewVersionAvailable(String currentVersion, String latestVersion) {
+    }
+
+    private String extractVersion(String text) {
+        if (text == null || text.isEmpty()) return null;
+        Matcher matcher = VERSION_PATTERN.matcher(text);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+        return null;
+    }
+
+    private boolean isNewVersionAvailable(String current, String latest) {
         try {
-            Log.d(TAG, "Version comparison - Current: '" + currentVersion + "', Latest: '" + latestVersion + "'");
-            
-            // Remove 'v' prefix if present
-            String current = currentVersion.startsWith("v") ? currentVersion.substring(1) : currentVersion;
-            String latest = latestVersion.startsWith("v") ? latestVersion.substring(1) : latestVersion;
-            
-            Log.d(TAG, "After prefix removal - Current: '" + current + "', Latest: '" + latest + "'");
-            
-            // Skip pre-release versions like "beta", "alpha", etc. - don't treat as updates
-            if (latest.equalsIgnoreCase("beta") || latest.equalsIgnoreCase("alpha") || latest.contains("-rc") || latest.contains("-alpha") || latest.contains("-beta")) {
-                Log.d(TAG, "Latest version is pre-release, skipping update check");
-                return false; // Don't show updates for pre-release versions
+            int[] cParts = parseVersionParts(current);
+            int[] lParts = parseVersionParts(latest);
+
+            for (int i = 0; i < 3; i++) {
+                if (lParts[i] > cParts[i]) return true;
+                if (lParts[i] < cParts[i]) return false;
             }
-            
-            String[] currentParts = current.split("\\.");
-            String[] latestParts = latest.split("\\.");
-            
-            Log.d(TAG, "Current parts: " + java.util.Arrays.toString(currentParts));
-            Log.d(TAG, "Latest parts: " + java.util.Arrays.toString(latestParts));
-            
-            int maxLength = Math.max(currentParts.length, latestParts.length);
-            
-            for (int i = 0; i < maxLength; i++) {
-                int currentPart = i < currentParts.length ? Integer.parseInt(currentParts[i]) : 0;
-                int latestPart = i < latestParts.length ? Integer.parseInt(latestParts[i]) : 0;
-                
-                Log.d(TAG, "Comparing part " + i + ": current=" + currentPart + ", latest=" + latestPart);
-                
-                if (latestPart > currentPart) {
-                    Log.d(TAG, "New version available! (latest > current)");
-                    return true;
-                } else if (latestPart < currentPart) {
-                    Log.d(TAG, "Current version is newer (current > latest)");
-                    return false;
-                }
-                // If equal, continue to next part
-            }
-            
-            Log.d(TAG, "Versions are equal");
-            return false; // Versions are equal
-            
+            return false;
         } catch (Exception e) {
             Log.e(TAG, "Error comparing versions: " + e.getMessage());
-            e.printStackTrace();
-            // If we can't parse versions, don't show update dialog
             return false;
         }
     }
-      private void showUpdateDialog(String latestVersion, String downloadUrl) {
+
+    private int[] parseVersionParts(String version) {
+        int[] parts = new int[]{0, 0, 0};
+        if (version == null) return parts;
+        Matcher matcher = VERSION_PATTERN.matcher(version);
+        if (matcher.find()) {
+            if (matcher.group(1) != null) parts[0] = Integer.parseInt(matcher.group(1));
+            if (matcher.group(2) != null) parts[1] = Integer.parseInt(matcher.group(2));
+            if (matcher.group(3) != null) parts[2] = Integer.parseInt(matcher.group(3));
+        }
+        return parts;
+    }
+
+    private void showUpdateDialog(String latestVersion, String downloadUrl) {
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle(context.getString(R.string.update_available_title));
             builder.setMessage(context.getString(R.string.update_available_message, latestVersion));
             builder.setCancelable(true);
-            
-            builder.setPositiveButton(context.getString(R.string.update_download), 
-                (DialogInterface dialog, int which) -> {
-                    openDownloadUrl(downloadUrl);
-                    dialog.dismiss();
-                });
-                
-            builder.setNegativeButton(context.getString(R.string.update_later), 
-                (DialogInterface dialog, int which) -> dialog.dismiss());
-            
+
+            builder.setPositiveButton(context.getString(R.string.update_download),
+                    (dialog, which) -> {
+                        openDownloadUrl(downloadUrl);
+                        dialog.dismiss();
+                    });
+
+            builder.setNegativeButton(context.getString(R.string.update_later),
+                    (dialog, which) -> dialog.dismiss());
+
             builder.create().show();
-            
         } catch (Exception e) {
-            Log.e(TAG, "Error showing update dialog, failing silently: " + e.getMessage());
-            // Fail silently - no user notification on error
+            Log.e(TAG, "Error showing update dialog: " + e.getMessage());
         }
     }
-    
+
     private void openDownloadUrl(String downloadUrl) {
         try {
-            String urlToOpen;
-            if (downloadUrl != null && !downloadUrl.isEmpty()) {
-                urlToOpen = downloadUrl;
-            } else {
-                // Fallback to releases page
-                urlToOpen = "https://github.com/pinterbanget/openrosary/releases/latest";
-            }
-            
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlToOpen));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(downloadUrl));
             context.startActivity(intent);
-            
         } catch (Exception e) {
             Log.e(TAG, "Error opening download URL: " + e.getMessage());
         }
     }
-    
+
     public void shutdown() {
         if (executorService != null && !executorService.isShutdown()) {
             executorService.shutdown();

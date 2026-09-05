@@ -13,4 +13,8 @@
     <attr name="mysteryCardHighlightStyle" format="reference" />
     <attr name="recommendationPillColor" format="color" />
     <attr name="recommendationPillTextColor" format="color" />
+    <attr name="segmentedTrackStyle" format="reference" />
+    <attr name="segmentedPillActiveStyle" format="reference" />
+    <attr name="segmentedPillActiveTextColor" format="color" />
+    <attr name="segmentedPillInactiveTextColor" format="color" />
 </resources>

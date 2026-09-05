@@ -6,24 +6,54 @@
     <!-- Welcome Screen -->
     <string name="welcome_message">Selamat datang di Rosario Sederhana\nPenghitung doa rosario yang minimalis</string>
     <string name="choose_theme">Pilih Tema:</string>
-    <string name="theme">Tema</string>
+    <string name="theme">tema</string>
     <string name="choose_language">Pilih Bahasa:</string>
-    <string name="latin_prayers_label">Doa-doa dalam bahasa Latin</string>
-    <string name="start_button">Mulai</string>
+    <string name="latin_prayers_label">doa latin</string>
+    <string name="start_button">mulai</string>
     <string name="welcome_options_title">Opsi Doa</string>
     <string name="welcome_options_subtitle">Atur tampilan dan preferensi doa sebelum memulai.</string>
     <string name="theme_mode_label">Tampilan</string>
-    <string name="theme_mode_hint">Pilih antara mode terang dan mode gelap hitam pekat</string>
-    <string name="language_row_label">Bahasa</string>
+    <string name="theme_mode_hint">Pilih tema OpenRosary terang atau biru tua</string>
+    <string name="language_row_label">bahasa</string>
     <string name="language_row_hint">Berlaku untuk menu, label, dan bacaan</string>
     <string name="latin_prayers_hint">Doa Rosario berubah ke Latin, tetapi bacaannya tetap dalam bahasa pilihan</string>
     <string name="choose_mysteries_subtitle">Pilih satu rangkaian peristiwa dan langsung mulai berdoa.</string>
     <string name="mystery_open_label">Buka</string>
+    <string name="brand_title">(openrosary)</string>
+    <string name="brand_tagline">alat doa rosario sederhana dan native.</string>
+    <string name="today_suggestion">saran hari ini: %1$s</string>
+    <string name="navigation_hint">gunakan tombol volume, tombol layar, atau geser</string>
+    <string name="other_devotions">Devosi Lainnya</string>
+    <string name="other_devotions_subtitle">Pilih koronka atau rosario devosional.</string>
+    <string name="devotion_77_title">77× Bapa Kami</string>
+    <string name="devotion_77_detail">77 kali Bapa Kami untuk ujud pribadi</string>
+    <string name="devotion_mercy_title">Koronka Kerahiman Ilahi</string>
+    <string name="devotion_mercy_detail">Lima dekade dengan butir rosario biasa</string>
+    <string name="devotion_sorrows_title">Rosario Tujuh Dukacita</string>
+    <string name="devotion_sorrows_detail">Tujuh dukacita · satu Bapa Kami dan tujuh Salam Maria setiap peristiwa</string>
+    <string name="devotion_franciscan_title">Mahkota Fransiskan</string>
+    <string name="devotion_franciscan_detail">Tujuh sukacita Maria · tujuh dekade</string>
+    <string name="prayer_complete">Doa selesai. Tuhan memberkati Anda.</string>
+    <string name="personal_intention_title">Permohonan Pribadi</string>
+    <string name="personal_intention_text">Ya Bapa, hari ini kami menghadap kepada-Mu. Kabulkanlah permohonan kami.\n\n(Sebutkan permohonan Anda.)</string>
+    <string name="opening_petitions_title">Permohonan</string>
+    <string name="opening_petitions_text">Tuhan, kasihanilah kami.\nKristus, kasihanilah kami.\nTuhan, kasihanilah kami.\nKristus, dengarkanlah doa kami.\nKristus, kabulkanlah doa kami.</string>
+    <string name="eternal_father_title">Bapa Kekal</string>
+    <string name="eternal_father_text">Bapa yang kekal, kupersembahkan kepada-Mu Tubuh dan Darah, Jiwa dan Keallahan Putra-Mu yang terkasih, Tuhan kami Yesus Kristus, sebagai pendamaian bagi dosa kami dan dosa seluruh dunia.</string>
+    <string name="sorrowful_passion_title">Demi Sengsara Yesus</string>
+    <string name="sorrowful_passion_text">Demi sengsara Yesus yang pedih, tunjukkanlah belas kasih-Mu kepada kami dan seluruh dunia.</string>
+    <string name="holy_god_title">Allah Kudus</string>
+    <string name="holy_god_text">Allah Kudus, Kudus dan Berkuasa, Kudus dan Kekal, kasihanilah kami dan seluruh dunia.</string>
+    <string name="closing_invocation_text">Perawan yang Amat Berdukacita, doakanlah kami.</string>
+    <string name="next">Berikutnya</string>
+    <string name="previous">Sebelumnya</string>
+    <string name="about">tentang</string>
+    <string name="back_arrow">←  Kembali</string>
     
     <!-- Theme Options -->
-    <string name="theme_light">Terang</string>
-    <string name="theme_dark">Gelap</string>
-    <string name="theme_amoled">Gelap (AMOLED)</string>
+    <string name="theme_light">terang</string>
+    <string name="theme_dark">gelap</string>
+    <string name="theme_amoled">oled</string>
     <string name="theme_switch_label">Ganti Tema</string>
     <string name="light">Terang</string>
     <string name="dark">Gelap</string>
@@ -52,11 +82,11 @@
     <string name="app_info_title">Informasi</string>
     
     <!-- Combined Info Content -->
-    <string name="app_info_content">OpenRosary v0.2.1\n\nDibuat dan dikelola oleh pinterbanget.\n\nKontributor\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023\n\nAtribusi Gambar\n\nIkon Peristiwa:\n• Peristiwa Gembira: Denis Doukhan dari Pixabay\n• Peristiwa Sedih dan Mulia: falco dari Pixabay\n• Peristiwa Terang: Gini George dari Pixabay</string>
+    <string name="app_info_content">OpenRosary v0.4\n\nDibuat dan dikelola oleh pinterbanget.\n\nKontributor\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023</string>
     
     <!-- Update Checker -->
     <string name="update_available_title">Pembaruan Tersedia</string>
-    <string name="update_available_message">Versi baru tersedia. Apakah Anda ingin mengunduhnya?</string>
+    <string name="update_available_message">OpenRosary %1$s tersedia. Apakah Anda ingin mengunduhnya?</string>
     <string name="update_download">Unduh</string>
     <string name="update_later">Nanti</string>
     
@@ -93,5 +123,6 @@
     <string-array name="theme_options">
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>
+        <item>@string/theme_amoled</item>
     </string-array>
 </resources>

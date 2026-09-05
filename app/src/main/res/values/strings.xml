@@ -6,24 +6,54 @@
     <!-- Welcome Screen -->
     <string name="welcome_message">Welcome to OpenRosary\nA minimalistic rosary prayer counter</string>
     <string name="choose_theme">Choose Theme:</string>
-    <string name="theme">Theme</string>
+    <string name="theme">theme</string>
     <string name="choose_language">Choose Language:</string>
-    <string name="latin_prayers_label">Latin prayers only</string>
-    <string name="start_button">Start</string>
+    <string name="latin_prayers_label">latin prayers</string>
+    <string name="start_button">start</string>
     <string name="welcome_options_title">Prayer Options</string>
     <string name="welcome_options_subtitle">Set your display and prayer preferences before you begin.</string>
     <string name="theme_mode_label">Appearance</string>
-    <string name="theme_mode_hint">Choose between light mode and true black dark mode</string>
-    <string name="language_row_label">Language</string>
+    <string name="theme_mode_hint">Choose between Light, Dark, and Dark (OLED) themes</string>
+    <string name="language_row_label">language</string>
     <string name="language_row_hint">Applies to menus, labels, and readings</string>
     <string name="latin_prayers_hint">Rosary prayers switch to Latin while readings stay vernacular</string>
     <string name="choose_mysteries_subtitle">Pick a set of mysteries and begin praying right away.</string>
     <string name="mystery_open_label">Open</string>
+    <string name="brand_title">(openrosary)</string>
+    <string name="brand_tagline">a simple native rosary tool.</string>
+    <string name="today_suggestion">today\'s suggestion: %1$s</string>
+    <string name="navigation_hint">use volume keys, buttons, or swipe</string>
+    <string name="other_devotions">Other Devotions</string>
+    <string name="other_devotions_subtitle">Choose a chaplet or devotional rosary.</string>
+    <string name="devotion_77_title">77× Our Father</string>
+    <string name="devotion_77_detail">77 Our Fathers for personal intentions</string>
+    <string name="devotion_mercy_title">Divine Mercy Chaplet</string>
+    <string name="devotion_mercy_detail">Five decades on the usual rosary beads</string>
+    <string name="devotion_sorrows_title">Seven Sorrows Rosary</string>
+    <string name="devotion_sorrows_detail">Seven sorrows · one Our Father and seven Hail Marys each</string>
+    <string name="devotion_franciscan_title">Franciscan Crown</string>
+    <string name="devotion_franciscan_detail">Seven joys of Mary · seven decades</string>
+    <string name="prayer_complete">Prayer complete. God bless you.</string>
+    <string name="personal_intention_title">Personal Intention</string>
+    <string name="personal_intention_text">Father, today we come before You. Hear our prayer.\n\n(Name your personal intention.)</string>
+    <string name="opening_petitions_title">Petitions</string>
+    <string name="opening_petitions_text">Lord, have mercy.\nChrist, have mercy.\nLord, have mercy.\nChrist, hear us.\nChrist, graciously hear us.</string>
+    <string name="eternal_father_title">Eternal Father</string>
+    <string name="eternal_father_text">Eternal Father, I offer You the Body and Blood, Soul and Divinity of Your dearly beloved Son, Our Lord Jesus Christ, in atonement for our sins and those of the whole world.</string>
+    <string name="sorrowful_passion_title">For the Sake of His Sorrowful Passion</string>
+    <string name="sorrowful_passion_text">For the sake of His sorrowful Passion, have mercy on us and on the whole world.</string>
+    <string name="holy_god_title">Holy God</string>
+    <string name="holy_god_text">Holy God, Holy Mighty One, Holy Immortal One, have mercy on us and on the whole world.</string>
+    <string name="closing_invocation_text">Virgin Most Sorrowful, pray for us.</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="about">about</string>
+    <string name="back_arrow">←  Back</string>
     
     <!-- Theme Options -->
-    <string name="theme_light">Light</string>
-    <string name="theme_dark">Dark</string>
-    <string name="theme_amoled">Dark (AMOLED)</string>
+    <string name="theme_light">light</string>
+    <string name="theme_dark">dark</string>
+    <string name="theme_amoled">oled</string>
     <string name="theme_switch_label">Switch Theme</string>
     <string name="light">Light</string>
     <string name="dark">Dark</string>
@@ -38,7 +68,7 @@
     <string name="sorrowful_mysteries">Sorrowful Mysteries</string>
     <string name="glorious_mysteries">Glorious Mysteries</string>
     <string name="luminous_mysteries">Luminous Mysteries</string>
-    <string name="recommended_for_today">Recommended for today</string>
+    <string name="recommended_for_today">recommended for today</string>
     
     <!-- Mystery Descriptions -->
     <string name="joyful_description">Mysteries of joy and celebration in the life of Christ</string>
@@ -48,19 +78,19 @@
     
     <!-- Counter Screen -->
     <string name="counter_instructions">Press Volume Down to count up\nPress Volume Up to count down</string>
-    <string name="options">Options</string>
-    <string name="info">Info</string>
-    <string name="back">Back</string>
+    <string name="options">options</string>
+    <string name="info">info</string>
+    <string name="back">back</string>
     
     <!-- Info Screen -->
     <string name="app_info_title">Information</string>
     
     <!-- Combined Info Content -->
-    <string name="app_info_content">OpenRosary v0.3 \n\nCreated and maintained by pinterbanget.\n\nContributors\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023\n\nImage Attribution\n\nMystery icons:\n• Joyful Mysteries: Denis Doukhan from Pixabay\n• Sorrowful and Glorious Mysteries: falco from Pixabay\n• Luminous Mysteries: Gini George from Pixabay</string>
+    <string name="app_info_content">OpenRosary v0.4 \n\nCreated and maintained by pinterbanget.\n\nContributors\n\n• EN: Ryanson Jonathan. Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.\n• ID: Ryanson Jonathan. Teks Alkitab Terjemahan Baru Edisi Kedua (TB2) © LAI 2023</string>
     
     <!-- Update Checker -->
     <string name="update_available_title">Update Available</string>
-    <string name="update_available_message">A new version is available. Would you like to download it?</string>
+    <string name="update_available_message">OpenRosary %1$s is available. Would you like to download it?</string>
     <string name="update_download">Download</string>
     <string name="update_later">Later</string>
     
@@ -97,5 +127,6 @@
     <string-array name="theme_options">
         <item>@string/theme_light</item>
         <item>@string/theme_dark</item>
+        <item>@string/theme_amoled</item>
     </string-array>
 </resources>

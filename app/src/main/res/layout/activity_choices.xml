@@ -7,12 +7,13 @@
     android:background="?android:attr/colorBackground"
     tools:context=".ChoicesActivity">
 
+    <!-- Header matching WelcomeActivity 1:1 -->
     <LinearLayout
         android:id="@+id/headerContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="24dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,25 +24,30 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/choose_mysteries"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="30sp"
+            android:text="@string/brand_title"
+            android:textColor="@color/colorAccent"
+            android:textSize="40sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="-0.02"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/choicesSubtitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/choose_mysteries_subtitle"
-            android:textSize="15sp" />
+            android:layout_marginTop="6dp"
+            android:text="@string/brand_tagline"
+            android:textColor="@color/colorMuted"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.15" />
     </LinearLayout>
 
+    <!-- Scrollable content shifted down -->
     <ScrollView
         android:id="@+id/mainScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:fillViewport="true"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
@@ -57,6 +63,7 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
+            <!-- Joyful Mysteries -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,25 +72,25 @@
                 <LinearLayout
                     android:id="@+id/joyfulMysteriesCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dp"
                     android:layout_marginTop="12dp"
                     android:background="?attr/mysteryCardBorderStyle"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:minHeight="112dp"
+                    android:gravity="center_vertical"
+                    android:minHeight="90dp"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
 
                     <ImageView
                         android:id="@+id/joyfulImagePlaceholder"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="14dp"
-                        android:contentDescription="@string/joyful_mysteries"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_joyful" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -104,10 +111,10 @@
                             android:id="@+id/joyfulDescriptionText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:maxLines="2"
+                            android:layout_marginTop="4dp"
                             android:text="@string/joyful_description"
-                            android:textSize="12sp" />
+                            android:textColor="@color/colorMuted"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <TextView
@@ -136,6 +143,7 @@
                     android:visibility="gone" />
             </FrameLayout>
 
+            <!-- Sorrowful Mysteries -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,25 +152,25 @@
                 <LinearLayout
                     android:id="@+id/sorrowfulMysteriesCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dp"
                     android:layout_marginTop="12dp"
                     android:background="?attr/mysteryCardBorderStyle"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:minHeight="112dp"
+                    android:gravity="center_vertical"
+                    android:minHeight="90dp"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
 
                     <ImageView
                         android:id="@+id/sorrowfulImagePlaceholder"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="14dp"
-                        android:contentDescription="@string/sorrowful_mysteries"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_sorrowful" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -183,10 +191,10 @@
                             android:id="@+id/sorrowfulDescriptionText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:maxLines="2"
+                            android:layout_marginTop="4dp"
                             android:text="@string/sorrowful_description"
-                            android:textSize="12sp" />
+                            android:textColor="@color/colorMuted"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <TextView
@@ -215,6 +223,7 @@
                     android:visibility="gone" />
             </FrameLayout>
 
+            <!-- Glorious Mysteries -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -223,25 +232,25 @@
                 <LinearLayout
                     android:id="@+id/gloriousMysteriesCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dp"
                     android:layout_marginTop="12dp"
                     android:background="?attr/mysteryCardBorderStyle"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:minHeight="112dp"
+                    android:gravity="center_vertical"
+                    android:minHeight="90dp"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
 
                     <ImageView
                         android:id="@+id/gloriousImagePlaceholder"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="14dp"
-                        android:contentDescription="@string/glorious_mysteries"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_glorious" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -262,10 +271,10 @@
                             android:id="@+id/gloriousDescriptionText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:maxLines="2"
+                            android:layout_marginTop="4dp"
                             android:text="@string/glorious_description"
-                            android:textSize="12sp" />
+                            android:textColor="@color/colorMuted"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <TextView
@@ -294,6 +303,7 @@
                     android:visibility="gone" />
             </FrameLayout>
 
+            <!-- Luminous Mysteries -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -302,25 +312,25 @@
                 <LinearLayout
                     android:id="@+id/luminousMysteriesCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="90dp"
                     android:layout_marginTop="12dp"
                     android:background="?attr/mysteryCardBorderStyle"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
-                    android:minHeight="112dp"
+                    android:gravity="center_vertical"
+                    android:minHeight="90dp"
                     android:orientation="horizontal"
-                    android:padding="16dp">
+                    android:paddingStart="16dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
 
                     <ImageView
                         android:id="@+id/luminousImagePlaceholder"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="14dp"
-                        android:contentDescription="@string/luminous_mysteries"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_luminous" />
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -341,10 +351,10 @@
                             android:id="@+id/luminousDescriptionText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:maxLines="2"
+                            android:layout_marginTop="4dp"
                             android:text="@string/luminous_description"
-                            android:textSize="12sp" />
+                            android:textColor="@color/colorMuted"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <TextView
@@ -373,6 +383,267 @@
                     android:visibility="gone" />
             </FrameLayout>
 
+            <!-- Inline Expandable "other devotions" Card (matching exact FrameLayout structure) -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp">
+
+                <LinearLayout
+                    android:id="@+id/otherDevotionsCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="?attr/mysteryCardBorderStyle"
+                    android:orientation="vertical">
+
+                    <!-- Header Row (Clickable) -->
+                    <LinearLayout
+                        android:id="@+id/otherDevotionsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/otherDevotionsTitleText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/other_devotions"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/otherDevotionsSubtitleText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/other_devotions_subtitle"
+                                android:textColor="@color/colorMuted"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/otherDevotionsChevronText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="12dp"
+                            android:text="&#8250;"
+                            android:textSize="26sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Expandable Devotions Sub-List with correct title casing -->
+                    <LinearLayout
+                        android:id="@+id/otherDevotionsExpandableContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="12dp"
+                        android:visibility="gone">
+
+                        <!-- Devotion 1: 77× Our Father -->
+                        <LinearLayout
+                            android:id="@+id/devotion77Item"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_marginTop="6dp"
+                            android:background="?attr/settingsRowBackgroundStyle"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="77× Our Father"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="For personal intentions"
+                                    android:textColor="@color/colorMuted"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="&#8250;"
+                                android:textColor="@color/colorMuted"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+
+                        <!-- Devotion 2: Divine Mercy Chaplet -->
+                        <LinearLayout
+                            android:id="@+id/devotionMercyItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_marginTop="8dp"
+                            android:background="?attr/settingsRowBackgroundStyle"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Divine Mercy Chaplet"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Five decades on standard beads"
+                                    android:textColor="@color/colorMuted"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="&#8250;"
+                                android:textColor="@color/colorMuted"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+
+                        <!-- Devotion 3: Seven Sorrows Rosary -->
+                        <LinearLayout
+                            android:id="@+id/devotionSorrowsItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_marginTop="8dp"
+                            android:background="?attr/settingsRowBackgroundStyle"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Seven Sorrows Rosary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Seven sorrows of Mary"
+                                    android:textColor="@color/colorMuted"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="&#8250;"
+                                android:textColor="@color/colorMuted"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+
+                        <!-- Devotion 4: Franciscan Crown -->
+                        <LinearLayout
+                            android:id="@+id/devotionFranciscanItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="72dp"
+                            android:layout_marginTop="8dp"
+                            android:background="?attr/settingsRowBackgroundStyle"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Franciscan Crown"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Seven joys of Mary"
+                                    android:textColor="@color/colorMuted"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="&#8250;"
+                                android:textColor="@color/colorMuted"
+                                android:textSize="22sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
             <LinearLayout
                 android:id="@+id/scrollableBottomButtonsLayout"
                 android:layout_width="match_parent"
@@ -384,28 +655,27 @@
                 <Button
                     android:id="@+id/scrollableOptionsButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:background="?attr/rectangularButtonStyle"
-                    android:padding="16dp"
+                    android:background="@drawable/button_secondary_modern"
                     android:text="@string/options"
                     android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/scrollableInfoButton"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:background="?attr/rectangularButtonStyle"
-                    android:padding="16dp"
+                    android:background="@drawable/button_secondary_modern"
                     android:text="@string/info"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Buttons -->
     <LinearLayout
         android:id="@+id/fixedBottomButtonsLayout"
         android:layout_width="0dp"
@@ -421,24 +691,22 @@
         <Button
             android:id="@+id/fixedOptionsButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:background="?attr/rectangularButtonStyle"
+            android:background="@drawable/button_secondary_modern"
             android:minHeight="52dp"
-            android:padding="16dp"
             android:text="@string/options"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/fixedInfoButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:background="?attr/rectangularButtonStyle"
+            android:background="@drawable/button_secondary_modern"
             android:minHeight="52dp"
-            android:padding="16dp"
             android:text="@string/info"
             android:textSize="16sp" />
     </LinearLayout>

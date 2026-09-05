@@ -91,18 +91,19 @@ public abstract class BaseActivity extends AppCompatActivity {
                 if (THEME_MODE_AMOLED.equals(themeMode)) {
                     setTheme(R.style.AppTheme_Amoled); 
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else if (THEME_MODE_DARK.equals(themeMode)) {
+                    setTheme(R.style.AppTheme_Dark); 
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     setTheme(R.style.AppTheme); 
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             } else {
-                 // Fallback if settings are null
                  setTheme(R.style.AppTheme); 
                  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         } catch (Exception e) {
             Log.e(TAG, "Error applying theme: " + (e.getMessage() != null ? e.getMessage() : "unknown"));
-            // Default to standard theme if there's an error
             setTheme(R.style.AppTheme); 
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
@@ -201,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             return THEME_MODE_AMOLED;
         }
         if (THEME_MODE_DARK.equals(themeMode)) {
-            return THEME_MODE_AMOLED;
+            return THEME_MODE_DARK;
         }
         return THEME_MODE_LIGHT;
     }

@@ -9,6 +9,11 @@
         <item name="android:colorBackground">@color/backgroundColorLight</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorSecondary">@color/colorMuted</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/backgroundColorLight</item>
+        <item name="android:navigationBarColor">@color/backgroundColorLight</item>
 
         <!-- Custom attributes -->
         <item name="mysteryButtonStyle">@style/MysteryButtonLight</item>
@@ -23,23 +28,36 @@
         <item name="mysteryCardHighlightStyle">@drawable/mystery_card_highlight</item>
         <item name="recommendationPillColor">@color/colorPrimary</item>
         <item name="recommendationPillTextColor">@android:color/white</item>
+            <item name="segmentedTrackStyle">@drawable/segmented_track</item>
+        <item name="segmentedPillActiveStyle">@drawable/segmented_pill_active</item>
+        <item name="segmentedPillActiveTextColor">@color/colorPrimary</item>
+        <item name="segmentedPillInactiveTextColor">@color/colorMuted</item>
     </style>
 
     <!-- Splash screen theme -->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowBackground">@color/backgroundColorLight</item>
+            <item name="segmentedTrackStyle">@drawable/segmented_track_dark</item>
+        <item name="segmentedPillActiveStyle">@drawable/segmented_pill_active_dark</item>
+        <item name="segmentedPillActiveTextColor">#FFFFFF</item>
+        <item name="segmentedPillInactiveTextColor">#8E8E93</item>
     </style>
 
     <!-- Dark theme (Material Dark) -->
     <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/backgroundColorAmoled</item>
+        <item name="colorPrimaryDark">@color/colorBackgroundDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/backgroundColorAmoled</item>
-        <item name="android:colorBackground">@color/backgroundColorAmoled</item>
+        <item name="android:windowBackground">@color/colorBackgroundDark</item>
+        <item name="android:colorBackground">@color/colorBackgroundDark</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorMuted</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:statusBarColor">@color/colorBackgroundDark</item>
+        <item name="android:navigationBarColor">@color/colorBackgroundDark</item>
 
         <!-- Custom attributes -->
         <item name="mysteryButtonStyle">@style/MysteryButtonDark</item>
@@ -54,10 +72,15 @@
         <item name="mysteryCardHighlightStyle">@drawable/mystery_card_highlight</item>
         <item name="recommendationPillColor">@color/colorAccent</item>
         <item name="recommendationPillTextColor">@android:color/black</item>
+            <item name="segmentedTrackStyle">@drawable/segmented_track_amoled</item>
+        <item name="segmentedPillActiveStyle">@drawable/segmented_pill_active_amoled</item>
+        <item name="segmentedPillActiveTextColor">#FFFFFF</item>
+        <item name="segmentedPillInactiveTextColor">#777777</item>
     </style>
 
     <!-- AMOLED Dark theme (True Black #000000) -->
     <style name="AppTheme.Amoled" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/backgroundColorAmoled</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -65,6 +88,10 @@
         <item name="android:colorBackground">@color/backgroundColorAmoled</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorMuted</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:statusBarColor">@color/backgroundColorAmoled</item>
+        <item name="android:navigationBarColor">@color/backgroundColorAmoled</item>
 
         <!-- Custom attributes using AMOLED-specific drawables -->
         <item name="mysteryButtonStyle">@style/MysteryButtonAmoled</item>
@@ -111,5 +138,30 @@
         <item name="android:background">@drawable/start_button_background</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:padding">12dp</item>
+    </style>
+    <style name="DevotionCard" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:background">?attr/mysteryCardBorderStyle</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="DevotionDetail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@color/colorMuted</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.35</item>
     </style>
 </resources>

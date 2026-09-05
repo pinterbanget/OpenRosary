@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
             }
             
             try {
-                Intent intent = new Intent(activity, ChoicesActivity.class);
+                Intent intent = new Intent(activity, WelcomeActivity.class);
                 activity.startActivity(intent);
                 activity.finish();
             } catch (Exception e) {
@@ -185,7 +185,7 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                     return;
                 }
                 
-                Intent intent = new Intent(activity, ChoicesActivity.class);
+                Intent intent = new Intent(activity, WelcomeActivity.class);
                 activity.startActivity(intent);
                 activity.finish();
             } catch (Exception e) {
@@ -388,6 +388,9 @@ public class MainActivity extends BaseActivity implements GestureDetector.OnGest
                 mysteryType = savedInstanceState.getString(KEY_MYSTERY_TYPE, "joyful");
             } else if (getIntent() != null && getIntent().getExtras() != null) {
                 String intentMysteryType = getIntent().getStringExtra("mysteryType");
+                if (intentMysteryType == null || intentMysteryType.isEmpty()) {
+                    intentMysteryType = getIntent().getStringExtra("mystery_type");
+                }
                 if (intentMysteryType != null && !intentMysteryType.isEmpty()) {
                     mysteryType = intentMysteryType;
                 }
